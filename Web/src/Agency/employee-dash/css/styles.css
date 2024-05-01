@@ -1,0 +1,320 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1d2634;
+    color: #9e9ea4;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .material-icons-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 35px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'sidebar header header header'
+      'sidebar main main main';
+    height: 100vh;
+  }
+  
+ 
+  .header {
+    grid-area: header;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  }
+  .header-right {
+    position:absolute;
+    top:10px;
+    right: 10px;
+}
+  .menu-icon {
+    display: none;
+  }
+  
+  /* ---------- SIDEBAR ---------- */
+  
+  #sidebar {
+    grid-area: sidebar;
+    height: 100%;
+    background-color: #263043;
+    overflow-y: auto;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+  
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px 30px 30px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar-title > span {
+    display: none;
+  }
+  
+  .sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .sidebar-list {
+    padding: 0;
+    margin-top: 15px;
+    list-style-type: none;
+  }
+  
+  .sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+  
+  .sidebar-list-item > a {
+    text-decoration: none;
+    color: #9e9ea4;
+  }
+  
+  .sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+   /* ************* */
+    z-index: 12 !important;   
+  }
+  /* main */
+  .main-bar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-search {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* .btn-primary {
+    background-color: #007bff;
+} */
+
+
+.main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+    
+    color: rgba(255, 255, 255, 0.95);
+    
+}
+
+.main-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+/* country form */
+.add-form{
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.add-form h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.add-form input[type="text"],
+.add-form select,
+.add-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-form label {
+    color: black;
+}
+
+.add-form textarea {
+    height: 100px; 
+}
+
+.add-form input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.add-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-form button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.add-form button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.add-form button.btn-primary:hover,
+.add-form button.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+/* countries cards */
+.card {
+    border-radius: 20px;
+    background-color: rgba(65, 105, 225, 0.247);
+    width: 200px;
+    padding: 20px;
+    float: left; /* Makes them to contunue to the left */
+    margin: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.cards-container {
+    display: flex;
+    
+    justify-content: space-between; 
+}
+.card-img {
+    width: 100%;
+    border-radius: 10px;
+}
+.card-content {
+    padding: 20px;
+}
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+#edit-country, #delete-country,#edit-destination, #delete-destination{
+    background-color: transparent;
+    border: none;
+    border-radius: 20px; 
+    width: 50px; 
+    height: 70px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+#edit-country, #edit-destination {
+    background-color: darkblue;
+}
+#delete-country, #delete-destination{
+    background-color: red;
+}
+/* tour form
+.add-tour-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.add-tour-form h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.add-tour-form .form-group {
+    margin-bottom: 15px;
+}
+
+.add-tour-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-tour-form select,
+.add-tour-form input[type="date"],
+.add-tour-form input[type="number"],
+.add-tour-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-tour-form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-tour-form button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.add-tour-form button.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.add-tour-form button.btn-primary:hover,
+.add-tour-form button.btn-secondary:hover {
+    opacity: 0.8;
+} */
