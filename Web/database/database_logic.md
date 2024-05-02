@@ -7,6 +7,7 @@ Client Table:
     -Gender
     -Phone
     -Password
+    -Type
     
 
 Country Table:
