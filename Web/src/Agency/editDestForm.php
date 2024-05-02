@@ -18,6 +18,10 @@ if(isset($_POST['DestinationID'])) {
         $destName = $row['DestinationName'];
         $description = $row['DestinationInfo'];
         $image = $row['DestinationImage'];
+        $destPrice = $row['DestinationPrice'];
+        $startDate = $row['StartDate'];
+        $endDate = $row['EndDate'];
+        $destType = $row['Type'];
 
         ?>
         <!DOCTYPE html>
@@ -37,6 +41,16 @@ if(isset($_POST['DestinationID'])) {
                 <input type="text" name="dest-name" placeholder="Destination Name" value="<?php echo $destName; ?>">
                 <textarea name="description" placeholder="Description"><?php echo $description; ?></textarea>
                 <input type="file" name="image" accept=".jpg, .jpeg, .png" value="<?php echo $image; ?>">
+                <input type = "text" name ="destPrice" placeholder="Price" value="<?php echo $destPrice; ?>">
+                <input type = "date" name ="startDate" placeholder="Start Date" value="<?php echo $startDate; ?>">
+                <input type = "date" name ="endDate" placeholder="End Date" value="<?php echo $endDate; ?>">
+               <select name="destType" value="<?php echo $destType; ?>">
+                <option value = "Adventure">Adventure</option>
+                <option value = "Relaxation">Relaxation</option>
+                <option value = "Historical">Historical</option>
+                <option value = "Cultural">Cultural</option>
+                <option value = "Other">Other</option>">
+                </select>
                 <input type="submit" class="btn btn-primary" name="submitDestEdit">
                 <button type="button" class="btn btn-secondary" id="cancel-country-btn">Cancel</button>
             </form>

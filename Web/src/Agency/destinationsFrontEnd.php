@@ -33,7 +33,9 @@
     </head>
     <body id="page-top">
     <?php
-        include_once "header.php";
+      
+       include "isLoggedIn.php";
+   
     ?>
 
 

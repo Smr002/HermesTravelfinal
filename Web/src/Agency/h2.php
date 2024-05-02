@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+<?php
+
+
+include_once "Logout.php"; 
+
+if(isset($_POST['logoutButton'])) {
+    logout(); 
+}
+
+
+?>
 
 <head>
     <meta charset="utf-8" />
@@ -104,7 +116,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/logo.jpg" alt="..." /></a>
+            <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/logo12.jpg" alt="..." /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -112,11 +124,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#services">Destinations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Tours</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Transportation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Other services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/main.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/countriesFrontEnd.php">Countries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/transportation.php">Transportation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Review</a></li>
                     <li class="nav-item" id="dropdown">
                         <a class="nav-link" href="#">
                             <img src="assets/img/logos/person.jpg" id="pe" alt="..." />
@@ -128,8 +140,8 @@
                                                 <img src="assets/img/logos/person.jpg" class="rounded" width="30">
                                             </div>
                                             <div class="ml-3 w-100">
-                                                <h4 class="mb-0 mt-0">Alex HMorrision</h4>
-                                                <span>Senior Journalist</span>
+                                                <h4 class="mb-0 mt-0"><?php echo "{$_SESSION['ClientName']}"." "."{$_SESSION['ClientSurname']}";?></h4>
+                                                <span>Status:<?php echo "{$_SESSION['Type']}";?></span>
                                                 <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                                                     <div class="d-flex flex-column">
                                                         <span class="articles">Articles</span>
@@ -146,7 +158,9 @@
                                                 </div>
                                                 <div class="button mt-2 d-flex flex-row align-items-center">
                                                     <button class="btn btn-sm btn-outline-primary w-100">Chat</button>
-                                                    <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>
+                                                    <form method="post">
+                                                    <input type="submit" class="btn btn-sm btn-primary w-100 ml-2" name="logoutButton" value="Logout">
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -154,7 +168,7 @@
                                 </div>
                                 <a href="#">Profile</a>
                                 <a href="#">Settings</a>
-                                <a href="#">Logout</a>
+                                <a href="main.php">Logout</a>
                             </div>
                         </a>
                      </li>

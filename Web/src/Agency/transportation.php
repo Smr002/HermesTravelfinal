@@ -25,7 +25,7 @@
   </style>
 </head>
 <body id="page-top">
-    <?php include_once "header.php"; ?>
+    <?php  include "isLoggedIn.php"; ?>
     <header>
         <!-- Your header content -->
         <img src="assets/img/transportation.jpg" alt="Transportation Icon" class="center"/>

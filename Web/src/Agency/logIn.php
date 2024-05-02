@@ -1,33 +1,48 @@
 <?php
+    session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "agencydb");
+    $conn = mysqli_connect("localhost", "root", "", "agencydb");
+    
+    if($conn){
+    
+    if(isset($_POST['loginButton'])){
+        
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['password'] = $_POST['password'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-if($conn){
 
-if(isset($_POST['loginButton'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-  
-    $sql = "SELECT * FROM client WHERE Username = '$username'";
-    $result = mysqli_query($conn, $sql);
+      
+        $sql = "SELECT * FROM Client WHERE Username = '".$_POST['username']."' ";
+        $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            $resultPassword = $row['Password']; 
 
-            if(password_verify($password , $resultPassword)) { 
-                if($row['Type'] == "employee" || $row['Type'] == "manager"){
-                    header('Location: http://localhost/web/src/Agency/admin.php');
+    
+        if(mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $resultPassword = $row['Password'];
+                $_SESSION['ClientName'] = $row['ClientName'];
+                $_SESSION['ClientSurname'] = $row['ClientSurname'];
+                $_SESSION['Type'] = $row['Type'];
+                
+                
+                if(password_verify($password , $resultPassword)) { 
+                    if($row['Type'] == "employee" || $row['Type'] == "manager"){
+                        header('Location: http://localhost/web/src/Agency/admin.php');
+                    }else{
+                    header('Location: main.php');
+                    }
+                    exit;
+                } else {
+                    echo "<script>alert('Login unsuccessful')</script>";
+                    session_destroy();
                 }
-                echo "<script>alert('Login successful')</script>";
-                exit;
-            } else {
-                echo "<script>alert('Login unsuccessful')</script>";
             }
+        } else {
+            echo "<script>alert('Username not found')</script>";
+            session_destroy();
         }
-    } else {
-        echo "<script>alert('Username not found')</script>";
-    }
-    mysqli_close($conn);
-}}
-?>
+        mysqli_close($conn);
+    }}
+    ?>

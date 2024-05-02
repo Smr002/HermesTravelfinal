@@ -1,5 +1,3 @@
-
-    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +18,9 @@
         <span class="material-icons-outlined">menu</span>
     </div> -->
         <div class="header-right">
+            <a href="admin.php">
         <span class="material-icons-outlined">home</span>
+        </a>
         <span class="material-icons-outlined">logout</span>
 
     </div>
@@ -36,7 +36,6 @@
         <ul class="sidebar-list">
             <li class="sidebar-list-item">
                 <span class="material-icons-outlined">dashboard</span>Dashboard
-            
             </li>
             <li class="sidebar-list-item">
                 <a href="countries.php">
@@ -70,18 +69,6 @@
             </li>
         </ul>
     </aside>
-    <!-- End Sidebar -->
-  
-    <main class="main-container">
-        <div class="main-title">
-            <h2>Welcome admin</h2>
-            
-        </div>
-    </main>
-    <
 
-    
-    </div>
-    <script src="js/scripts.js"></script>
 </body>
 </html>

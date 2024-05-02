@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Contact Page</title>
     <style>
@@ -8,14 +9,14 @@
             top: 0;
             left: 0;
             height: 100%;
-            z-index: -1; 
-            object-fit: cover; 
+            z-index: -1;
+            object-fit: cover;
         }
 
         * {
             box-sizing: border-box;
         }
-     
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -23,7 +24,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; 
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,7 +35,7 @@
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); 
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -61,7 +62,7 @@
         input[type="password"],
         select,
         textarea {
-            width: calc(100% - 22px); 
+            width: calc(100% - 22px);
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -98,6 +99,27 @@
         .contact-details p {
             margin-bottom: 10px;
         }
+        #signIn {
+            width: 100%;
+            background-color: #ffc800;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        #signIn:hover {
+            background-color: black;
+            transform: scale(1.05);
+        }
+
+        .sign-in-container {
+            text-align: center;
+            margin-top: 1px;
+        }
 
         .error-message,
         .success-message {
@@ -129,12 +151,21 @@
         }
 
         @keyframes moveLeftRight {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(50px); }
-            100% { transform: translateX(0); }
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(50px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
+
 <body>
     <video autoplay loop muted>
         <source src="assets/img/video.mp4" type="video/mp4" name='video'>
@@ -177,15 +208,22 @@
                 </div>
                 <div style="flex-basis: 48%;">
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
+                        required>
                 </div>
-                <div style="flex-basis: 100%;">
-                    <input type="submit" value="Submit" name = "Submit">
+
+                <div style="flex-basis: 50%;">
+                    <input type="submit" value="Submit" name="Submit">
                     <p class="success-message"></p>
                     <p class="error-message"></p>
                 </div>
-            </div>
-          
+              
+                <div class="sign-in-container">
+                     <a href="http://localhost/web/src/Agency/signIn.php">
+                <button id="signIn" type="button">Sign In</button>
+                </div>
+           
+
         </form>
         <div class="footer">
             &copy; 2024 Your Adventure Journey. All rights reserved.
@@ -195,18 +233,18 @@
         </div>
     </div>
     <?php
-        include "createAcc.php";
-        
+    include "createAcc.php";
+
     ?>
     <script>
- 
+
         function validateForm() {
             var inputs = document.querySelectorAll('input, select, textarea');
             var errorMessage = document.querySelector('.error-message');
             var isValid = true;
             errorMessage.style.display = 'none';
 
-            inputs.forEach(function(input) {
+            inputs.forEach(function (input) {
                 if (!input.value.trim()) {
                     displayErrorMessage('Please enter your ' + input.name);
                     isValid = false;
@@ -226,6 +264,7 @@
                 isValid = false;
             }
 
+
             return isValid;
         }
 
@@ -242,4 +281,5 @@
 
     </script>
 </body>
+
 </html>

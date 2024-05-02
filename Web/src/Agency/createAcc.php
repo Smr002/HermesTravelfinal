@@ -1,5 +1,4 @@
 <?php
-
 $conn = mysqli_connect("localhost", "root", "", "agencydb");
 
 if ($conn) {    
@@ -11,6 +10,7 @@ if ($conn) {
         $gender = $_POST['gender'];
         $username = $_POST['username'];
         $phoneNumber = $_POST['phoneNumber'];
+        $type = "Client";
     
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
@@ -20,11 +20,11 @@ if ($conn) {
         if(mysqli_num_rows($check_username_result) > 0) {
             echo "<script>alert('Username already exists')</script>";
         } else {
-            $insert_sql ="INSERT INTO Client (ClientName, ClientSurname, Username, Email, Gender, Phone, Password) 
-            VALUES ('$fName', '$lName', '$username', '$email', '$gender', '$phoneNumber', '$hashed_password')";
+            $insert_sql ="INSERT INTO Client (ClientName, ClientSurname, Username, Email, Gender, Phone, Password,Type) 
+            VALUES ('$fName', '$lName', '$username', '$email', '$gender', '$phoneNumber', '$hashed_password','$type')";
             
             if(mysqli_query($conn, $insert_sql)) {
-                echo "<script>alert('Registration success')</script>";
+               echo "<script>alert('Registration successful')</script>";
                 exit;
             } else {
                 echo "<script>alert('Registration failed')</script>";
@@ -37,6 +37,6 @@ if ($conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
 mysqli_close($conn);
+
 ?>

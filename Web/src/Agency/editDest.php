@@ -9,6 +9,12 @@ if(isset($_POST['submitDestEdit'])){
     $id = $_POST['destID'];
     $destName = $_POST['dest-name'];
     $description = $_POST['description'];
+    $destCountry = $_POST['country'];
+    $destPrice = $_POST['destPrice'];
+    $destStart = $_POST['startDate'];
+    $destEnd = $_POST['endDate'];
+    $destType = $_POST['destType'];
+    
     if($_FILES["image"]["error"] == 4){
         echo "<script> alert('Image Does Not Exist'); </script>";
     } else{
@@ -29,7 +35,7 @@ if(isset($_POST['submitDestEdit'])){
 
             move_uploaded_file($tmpName, 'assets/img/' . $newImageName);
             // Modify the country details using UPDATE query
-            $update_sql = "UPDATE destination SET DestinationName='$destName', DestinationInfo='$description', DestinationImage='$newImageName' WHERE DestinationID='$id'";
+            $update_sql = "UPDATE destination SET DestinationName='$destName', DestinationInfo='$description', DestinationImage='$newImageName',DestinationPrice = '$destPrice', StartDate = '$destStart',EndDate = '$destEnd', Type = '$destType' WHERE DestinationID='$id'";
             if(mysqli_query($conn, $update_sql)) {
                 echo "<script>window.location.href = 'destinations-admin.php';</script>";
             } else {
