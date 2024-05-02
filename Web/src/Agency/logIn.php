@@ -16,7 +16,7 @@ if(isset($_POST['loginButton'])){
             $resultPassword = $row['Password']; 
 
             if(password_verify($password , $resultPassword)) { 
-                if($username == "admin"){
+                if($row['Type'] == "employee" || $row['Type'] == "manager"){
                     header('Location: http://localhost/web/src/Agency/admin.php');
                 }
                 echo "<script>alert('Login successful')</script>";
