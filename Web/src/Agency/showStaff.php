@@ -21,6 +21,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                 <td>" . $row['Email'] . "</td>
                 <td>" . $row['Gender'] . "</td>      
                 <td>" . $row['Type'] ."</td>
+                <td><input type='submit' id='delete-staff' onclick='return confirmDelete(". $row['ClientID'].")' value='Delete'></input>
             </tr>" ;
          
 
@@ -38,3 +39,22 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
+<script>
+    function confirmEdit(){
+        return confirm("Are you sure you want to edit this country?");
+    }
+
+    function confirmDelete(userID) {
+        if(confirm("Are you sure you want to delete this staff member?")){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("User deleted successfully!");
+                    location.reload();
+                }
+            };
+            xhttp.open("GET", "deleteUser.php?id=" + userID, true);
+            xhttp.send();
+        }
+        };
+</script>

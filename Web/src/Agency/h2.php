@@ -125,7 +125,37 @@ if(isset($_POST['logoutButton'])) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/main.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/countriesFrontEnd.php">Countries</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCountries" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Countries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCountries">
+                            <?php
+                            $conn = mysqli_connect("localhost", "root", "", "agencydb");
+
+                            if (!$conn) {
+                                die("Connection Failed : " . mysqli_connect_error());
+                            } else {
+                                $getData = "SELECT * FROM country";
+                                $result = mysqli_query($conn, $getData);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $countryId = $row['CountryID'];
+                                        $countryName = $row['CountryName'];
+                                        echo "<li><a class='dropdown-item' href='countriesFrontEnd.php?countryId=$countryId'>$countryName</a></li>";
+                                        
+
+
+                                    }
+                                }
+                                mysqli_free_result($result);
+                                mysqli_close($conn);
+                            }
+                            ?>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/transportation.php">Transportation</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Review</a></li>

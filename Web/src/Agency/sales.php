@@ -74,7 +74,7 @@
     <!-- Main Content -->
     <main class="main-container">
        <?php
-echo "Ketu do printoni te gjitha shitjet me emer klienti, ca ka blere, totalin,data etj";
+            include_once "viewSales.php";
        ?>
             
     

@@ -18,6 +18,7 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Gender</th>
+                <th>Review</th>
             </tr>
             <?php include_once 'showUsers.php'; ?>
         </thead>

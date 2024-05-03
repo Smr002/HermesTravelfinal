@@ -74,7 +74,7 @@
     <!-- Main Content -->
     <main class="main-container">
         <div class="main-title">
-            <h2>Tours</h2>
+            <h2>Review</h2>
             
         </div>
         <div class="main-bar">
@@ -156,29 +156,9 @@
     </div>
     <div class="main-content">  
         
-        <div class="card">
-            <img src="albania1.jpg" alt="flag" class="card-img">
-            <div class="card-content">
-                <h3>tour 0</h3>
-                <p>City:tr</p>
-                <div class="card-actions">
-                    <button class="material-icons-outlined" id="edit-country">edit</button>
-                    <button class="material-icons-outlined" id="delete-country">delete</button>
-                </div>
-            </div>
-        </div>
         
-        <div class="card">
-            <img src="spain1.jpg" alt="flag" class="card-img">
-            <div class="card-content">
-                <h3>Test Tour1</h3>
-                <p>city:sevilla</p>
-                <div class="card-actions">
-                    <button class="material-icons-outlined" id="edit-country">edit</button>
-                    <button class="material-icons-outlined" id="delete-country">delete</button>
-                </div>
-            </div>
-        </div>
+        
+       <?php include_once"viewReview.php";?>
     </div>
     </main>
     

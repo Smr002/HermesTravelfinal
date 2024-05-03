@@ -14,14 +14,13 @@
     <table id='example' class='table table-striped' style='width:100%'>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Gender</th>
+                <th>Destination Name</th>
+                <th>Destination Info</th>
+                <th>Destination Price</th>
                 <th>Type</th>
-                <th>Delete</th>
+                <th>Revenue</th>
             </tr>
-            <?php include_once 'showStaff.php'; ?>
+            <?php include_once 'showSales.php'; ?>
         </thead>
         <tbody></tbody>
     </table>

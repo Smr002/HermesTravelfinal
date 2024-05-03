@@ -10,5 +10,6 @@
            
        }else{
         include_once "header.php";
+        
        }
 ?>
