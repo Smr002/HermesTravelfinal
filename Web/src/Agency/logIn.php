@@ -29,7 +29,9 @@
                 
                 if(password_verify($password , $resultPassword)) { 
                     if($row['Type'] == "employee" || $row['Type'] == "manager"){
-                        header('Location: http://localhost/web/src/Agency/admin.php');
+                        header('Location: admin.php');
+                     }else if($row['Type'] == "admin" ){
+                                header('Location : #');
                     }else{
                     header('Location: main.php');
                     }
