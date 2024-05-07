@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles1.css">
+    <link rel="stylesheet" href="css/dashboard-styles.css">
 </head>
 <body>
   
@@ -20,8 +20,12 @@
         <span class="material-icons-outlined">menu</span>
     </div> -->
         <div class="header-right">
-        <span class="material-icons-outlined">home</span>
-        <span class="material-icons-outlined">logout</span>
+        <a href="main.php" class="home-link" title="Go to main page">
+    <span class="material-icons-outlined">home</span>
+</a>
+<!-- <span class="material-icons-outlined">logout</span> -->
+
+
 
     </div>
     <!-- End Header -->
@@ -49,11 +53,6 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="tours-admin.php">
-                <span class="material-icons-outlined">luggage</span>Review
-                </a>
-            </li>
-            <li class="sidebar-list-item">
                 <a href="clients-admin.php">
                 <span class="material-icons-outlined">people</span>Clients
                 </a>
@@ -73,12 +72,10 @@
     <!-- End Sidebar -->
   
     <main class="main-container">
-        <div class="main-title">
-            <h2>Welcome admin</h2>
-            
-        </div>
-    </main>
-    <
+    <?php
+    include_once 'admin-dashboard.php';
+    ?>
+</main>
 
     
     </div>
