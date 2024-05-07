@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Update</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+      h5,
+      h6 {
+        color: #ffe480;
+      }
+      .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .update-button{
+        background-color:#ffe480;
+        border-color: #ffe480;;
+      }
+      .personal-details{
+        color:#ffe480!important; 
+      }
+      .btn {
+        border-radius: 20px;
+        padding: 8px 20px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        border-radius: 20px;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="account-settings text-center">
+                <div class="user-profile">
+                  <div class="user-avatar">
+                    <img
+                      src="./assets/img/team/kristi.jpg"
+                      alt="Kristi Samara"
+                      class="img-fluid rounded-circle"
+                    />
+                  </div>
+                  <h5 class="user-name mt-3">Kristi Samara</h5>
+                  <h6 class="user-email mb-4">ksamara22@epoka.edu.al</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <h6 class="mb-4 text-primary font-weight-bold h3 personal-details">
+                    Personal Details
+                  </h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="fullName">Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fullName"
+                      placeholder="Kristi Samara"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="eMail">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="eMail"
+                      placeholder="ksamara22@epoka.edu.al"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="phone"
+                      placeholder="+355 69 322 5557"
+                    />
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label for="website">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="website"
+                      placeholder="**********"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="text-right">
+                    <button type="button" class="btn btn-secondary mr-2">
+                      Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary update-button">
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
