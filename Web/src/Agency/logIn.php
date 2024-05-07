@@ -29,9 +29,9 @@
                 
                 if(password_verify($password , $resultPassword)) { 
                     if($row['Type'] == "employee" || $row['Type'] == "manager"){
-                        header('Location: admin.php');
+                        header('Location: employeeDash.php');
                      }else if($row['Type'] == "admin" ){
-                                header('Location : #');
+                        header('Location: admin.php');
                     }else{
                     header('Location: main.php');
                     }

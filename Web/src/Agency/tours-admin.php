@@ -60,8 +60,8 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="sales.php"
-                <span class="material-icons-outlined">monetization_on</span>Sales
+                <a href="sales.php">
+                <span> class="material-icons-outlined">monetization_on</span>Sales
                 </a>
             </li>
             <li class="sidebar-list-item">

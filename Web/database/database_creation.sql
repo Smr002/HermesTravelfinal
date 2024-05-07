@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS `Client` (
   `Gender` ENUM('Male', 'Female', 'Other'),
   `Phone` VARCHAR(20),
   `Password` VARCHAR(255),
-  `Type` VARCHAR(50)
+  `Type` VARCHAR(50),
+  `Reviews` TEXT
+
 );
 
 -- Create Country table

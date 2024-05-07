@@ -112,6 +112,7 @@
             text-align: center;
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <video autoplay loop muted>
@@ -123,7 +124,8 @@
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" required><br>
+            <div class="g-recaptcha" data-sitekey="6LcAS9MpAAAAABr3H4NksFbee5AYEGstu4L6FHgV"></div><br>
             <input type="submit" value="Login" name="loginButton">
             <div class="sign-up-container">
                      <a href="http://localhost/web/src/Agency/signUp.php">

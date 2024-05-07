@@ -31,18 +31,18 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="contactForm" action="mail.php" method="post" data-sb-form-api-token="API_TOKEN">
                 <div class="row align-items-stretch mb-5">
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="Your Name *"
+                            <input class="form-control" id="name" name= "name" type="text" placeholder="Your Name *"
                                 data-sb-validations="required" />
                             <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                         </div>
                         <div class="form-group">
                             <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="Your Email *"
+                            <input class="form-control" id="email" name = "email" type="email" placeholder="Your Email *"
                                 data-sb-validations="required,email" />
                             <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <div class="form-group form-group-textarea mb-md-0">
                             <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Your Message *"
+                            <textarea class="form-control" id="message" name="msg" placeholder="Your Message *"
                                 data-sb-validations="required" style="align-items: center;"></textarea>
                             <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
                             </div>
@@ -80,7 +80,7 @@
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
                     <div  class="text-center">
-                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">Send Message</button>
+                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="submit" name="butt">Send Message</button>
                             </div>
             </form>
         </div>

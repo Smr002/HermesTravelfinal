@@ -99,6 +99,7 @@
         .contact-details p {
             margin-bottom: 10px;
         }
+
         #signIn {
             width: 100%;
             background-color: #ffc800;
@@ -164,6 +165,7 @@
             }
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -217,12 +219,16 @@
                     <p class="success-message"></p>
                     <p class="error-message"></p>
                 </div>
-              
+
                 <div class="sign-in-container">
-                     <a href="http://localhost/web/src/Agency/signIn.php">
-                <button id="signIn" type="button">Sign In</button>
+                    <a href="http://localhost/web/src/Agency/signIn.php">
+                        <button id="signIn" type="button">Sign In</button>
                 </div>
-           
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center: 100vh;">
+                    <div class="g-recaptcha" data-sitekey="6LcAS9MpAAAAABr3H4NksFbee5AYEGstu4L6FHgV"></div>
+                </div>
+
 
         </form>
         <div class="footer">
