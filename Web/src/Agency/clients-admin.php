@@ -1,3 +1,5 @@
+
+    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -10,21 +12,6 @@
 </head>
 <body>
   
-
-    <div class="grid-container">
-    <!-- Header -->
-    <header class="header"></header>
-    <!-- <div class="menu-icon" onclick="openSidebar()">
-        <span class="material-icons-outlined">menu</span>
-    </div> -->
-        <div class="header-right">
-            <a href="admin.php">
-        <span class="material-icons-outlined">home</span>
-        </a>
-        <span class="material-icons-outlined">logout</span>
-
-    </div>
-    <!-- End Header -->
 
     <?php include "adminHeader.php";?>
     <!-- End Sidebar -->
