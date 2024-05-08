@@ -52,3 +52,27 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// for the menu in the admin dashboard
+
+// JavaScript code for toggling the sidebar and menu icon
+
+// Define your functions for opening and closing the sidebar
+
+let sidebarOpen = false;
+const sidebar = document.getElementById('sidebar');
+
+function openSidebar() {
+  if (!sidebarOpen) {
+    sidebar.classList.add("sidebar-responsive");
+    sidebarOpen = true;
+  }
+}
+
+function closeSidebar() {
+  if (sidebarOpen) {
+    sidebar.classList.remove("sidebar-responsive");
+    sidebarOpen = false;
+  }
+}
+
+
