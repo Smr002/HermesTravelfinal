@@ -16,19 +16,24 @@ if (!$conn) {
                 $destType = $row['Type'];
                 $destRev = $row['Revenue'];
             }
-        if (isset($_POST['payment'])) {
-            $new_revenue = $destRev + $price;
+            if (isset($_POST['payment'])) {
+                $new_revenue = $destRev + $price;
 
 
-            $update = "UPDATE Destination SET Revenue = $new_revenue WHERE DestinationID = $id";
-            if (mysqli_query($conn, $update)) {
-                echo "<script>alert('Success')</script>";
-            } else {
-                echo "<script>alert('Error')</script>" . mysqli_error($conn);
+                $update = "UPDATE Destination SET Revenue = $new_revenue WHERE DestinationID = $id";
+                if (mysqli_query($conn, $update)) {
+                    echo "<script>alert('Success')</script>";
+                } else {
+                    echo "<script>alert('Error')</script>" . mysqli_error($conn);
+                }
             }
-        }
-        mysqli_free_result($result);
-        mysqli_close($conn);
+            mysqli_free_result($result);
+            mysqli_close($conn);
+            if (isset($_POST['payment'])) {
+                header("Location: bill.php?cardNumber=$cardNumber&expiry=$expiry&cvv=$cvv&cardName=$cardName&destName=$destName&price=$price");
+                
+            }
+            
 
             ?>
             <!DOCTYPE html>
@@ -192,62 +197,62 @@ if (!$conn) {
                         box-shadow: none;
                     }
                 </style>
-<script>
-    function validateForm() {
-        var cardNumber = document.forms["paymentForm"]["cardNumber"].value.trim();
-        var expiry = document.forms["paymentForm"]["expiry"].value.trim();
-        var cvv = document.forms["paymentForm"]["cvv"].value.trim();
-        var cardName = document.forms["paymentForm"]["cardName"].value.trim();
 
-        // Check if any field is empty
-        if (cardNumber == "" || expiry == "" || cvv == "" || cardName == "") {
-            alert("All fields are required");
-            return false;
-        }
+            <script>
+                   // Define the function for formatting card number and date inputs
+                   $(document).ready(function() {
+                        // For Card Number formatted input
+                        var cardNum = document.getElementById('cr_no');
+                        cardNum.onkeyup = function(e) {
+                            if (this.value == this.lastValue) return;
+                            var caretPosition = this.selectionStart;
+                            var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                            var parts = [];
 
-        // Validate credit card number using Luhn's algorithm
-        if (!isValidCreditCard(cardNumber)) {
-            alert("Please enter a valid credit card number");
-            return false;
-        }
+                            for (var i = 0, len = sanitizedValue.length; i < len; i += 4) {
+                                parts.push(sanitizedValue.substring(i, i + 4));
+                            }
 
-        // Validate expiry date
-        var currentDate = new Date();
-        var currentYear = currentDate.getFullYear() % 100; // Get last two digits of current year
-        var currentMonth = currentDate.getMonth() + 1; // January is 0
-        var [inputMonth, inputYear] = expiry.split('/').map(e => parseInt(e.trim(), 10));
-        
-        if (inputYear < currentYear || (inputYear === currentYear && inputMonth < currentMonth)) {
-            alert("Please enter a valid expiry date");
-            return false;
-        }
+                            for (var i = caretPosition - 1; i >= 0; i--) {
+                                var c = this.value[i];
+                                if (c < '0' || c > '9') {
+                                    caretPosition--;
+                                }
+                            }
+                            caretPosition += Math.floor(caretPosition / 4);
 
-        // Validate CVV code
-        if (isNaN(cvv) || cvv.length !== 3) {
-            alert("Please enter a valid 3-digit CVV code");
-            return false;
-        }
+                            this.value = this.lastValue = parts.join(' ');
+                            this.selectionStart = this.selectionEnd = caretPosition;
+                        }
 
-        // If all validations pass, return true
-        return true;
-    }
+                        // For Date formatted input
+                        var expDate = document.getElementById('exp');
+                        expDate.onkeyup = function(e) {
+                            if (this.value == this.lastValue) return;
+                            var caretPosition = this.selectionStart;
+                            var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
+                            var parts = [];
 
-    // Function to validate credit card using Luhn's algorithm
-    function isValidCreditCard(cardNumber) {
-        var sum = 0;
-        var doubleUp = false;
-        for (var i = cardNumber.length - 1; i >= 0; i--) {
-            var digit = parseInt(cardNumber.charAt(i), 10);
-            if (doubleUp) {
-                digit *= 2;
-                if (digit > 9) digit -= 9;
-            }
-            sum += digit;
-            doubleUp = !doubleUp;
-        }
-        return sum % 10 === 0;
-    }
-</script>
+                            for (var i = 0, len = sanitizedValue.length; i < len; i += 2) {
+                                parts.push(sanitizedValue.substring(i, i + 2));
+                            }
+
+                            for (var i = caretPosition - 1; i >= 0; i--) {
+                                var c = this.value[i];
+                                if (c < '0' || c > '9') {
+                                    caretPosition--;
+                                }
+                            }
+                            caretPosition += Math.floor(caretPosition / 2);
+
+                            this.value = this.lastValue = parts.join('/');
+                            this.selectionStart = this.selectionEnd = caretPosition;
+                        }
+                    });
+                </script>
+
+
+            </script>
 
 
             </head>
@@ -282,7 +287,7 @@ if (!$conn) {
                                     <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
                                         data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
                                         aria-controls="collapseExample">
-                                        <span class="fw-bold" >Credit Card</span>
+                                        <span class="fw-bold">Credit Card</span>
                                         <br><br>
                                         <span>
                                             <span class="fab fa-cc-amex"></span>
@@ -305,23 +310,29 @@ if (!$conn) {
                                             </p>
                                         </div>
                                         <div class="col-lg-7">
-                                        <form method="post" action="" class="form" name="paymentForm" onsubmit="return validateForm()">
+                                        <form method="post" action="bill.php" class="form" name="paymentForm" onsubmit="return validateForm()">
+                                                <!-- Other form fields -->
+                                                <input type="hidden" name="destName" value="<?php echo $destName; ?>">
+                                                <input type="hidden" name="price" value="<?php echo $price; ?>">
+
+                                                
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form__div">
-                                                            <input type="text" class="form-control" placeholder=" "required>
-                                                            <label for="" class="form__label">Card Number</label>
+                                                        <input type="text" id="cr_no" class="form-control" placeholder="" required minlength="19" maxlength="19">
+                                                            <label for="cr_no" class="form__label">Card Number</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
-                                                        <div class="form__div">
-                                                            <input type="text" class="form-control" placeholder=" " required>
-                                                            <label for="" class="form__label">MM / yy</label>
+                                                    <div class="form__div">
+                                                            <input type="text" id="exp" class="form-control" placeholder=" " required minlength="5" maxlength="5">
+                                                            <label for="exp" class="form__label">MM / yy</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
-                                                        <div class="form__div">
-                                                            <input type="password" class="form-control" placeholder=" " required>
+                                                    <div class="form__div">
+                                                            <input type="password" class="form-control" placeholder=" " required  minlength="3" maxlength="3">
                                                             <label for="" class="form__label">CVV Code</label>
                                                         </div>
                                                     </div>
@@ -335,9 +346,11 @@ if (!$conn) {
                                                 </div>
                                                 <div class="col-12">
 
-                        <input class="btn btn-primary payment" type="submit" name="payment" value="Make Payment">
+                                                    <input class="btn btn-primary payment" type="submit" name="payment"
+                                                        value="Make Payment">
 
-                    </div>
+
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -345,7 +358,7 @@ if (!$conn) {
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </body>
 

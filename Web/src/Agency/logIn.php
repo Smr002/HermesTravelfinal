@@ -27,6 +27,7 @@
                 $_SESSION['Type'] = $row['Type'];
                 
                 
+                
                 if(password_verify($password , $resultPassword)) { 
                     if($row['Type'] == "employee" || $row['Type'] == "manager"){
                         header('Location: employeeDash.php');

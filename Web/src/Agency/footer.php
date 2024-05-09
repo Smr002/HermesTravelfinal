@@ -25,14 +25,11 @@ if ($conn) {
 }
 ?>
 
-?>
-
-
-
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,12 +44,30 @@ if ($conn) {
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style>
-        /* Custom CSS for center-aligning text area */
         .form-group-textarea {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        .form-group-textarea textarea {
+            text-align: center;
+            width: 100%;
+            /* Adjust the width to fill the container */
+        }
+
+        #contactForm {
+            max-width: 1200px;
+            /* Set a maximum width for the form */
+            margin: auto;
+            /* Center the form horizontally */
+        }
+
+
     </style>
+
 </head>
+
 <body id="page-top">
     <!-- Contact-->
     <section class="page-section" id="contact">
@@ -60,37 +75,41 @@ if ($conn) {
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Leave a Review For Us</h2>
             </div>
-            <form id="contactForm" method="post">
-                <div class="row align-items-stretch mb-5">
-                    <div class="col-md-6">
-                        <div class="form-group form-group-textarea mb-md-0">
-                            <textarea class="form-control form-group-textarea" id="message" placeholder="Your Message *" name="Review1" required></textarea>
-                            <div class="invalid-feedback">A message is required.</div>
-                        </div>
+            <div class="row justify-content-center"> <!-- Center the form horizontally -->
+                <form id="contactForm" method="post" class="col-md-6">
+                    <div class="form-group form-group-textarea">
+                        <textarea class="form-control" id="message" placeholder="Your Message *" name="Review1"
+                            required></textarea>
+                        <div class="invalid-feedback">A message is required.</div>
                     </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-xl text-uppercase" name="Review">Send Review</button>
-                </div>
-            </form>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-xl text-uppercase" name="Review">Send
+                            Review</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2024</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    <a class="link-dark text-decoration-none me-3" href="#">Privacy Policy</a>
+                    <a class="link-dark text-decoration-none" href="#">Terms of Use</a>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+
 </html>

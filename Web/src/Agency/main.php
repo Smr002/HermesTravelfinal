@@ -209,7 +209,7 @@
         <ul class="timeline">
             <?php
             $conn = mysqli_connect("localhost", "root", "", "agencydb");
-            $getReviews = "SELECT ClientName, Reviews FROM Client WHERE Type = 'User' ORDER BY RAND() LIMIT 4"; // Fetch 4 random reviews from clients of type 'User'
+            $getReviews = "SELECT ClientName, Reviews,ProfileImage FROM Client WHERE Type = 'Client' ORDER BY RAND() LIMIT 4"; // Fetch 4 random reviews from clients of type 'User'
             $result = mysqli_query($conn, $getReviews);
             $leftAligned = true; // Flag to alternate text alignment
 
@@ -217,7 +217,7 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     ?>
                     <li class="<?php echo $leftAligned ? '' : 'timeline-inverted'; ?>">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/<?php echo rand(1, 4); ?>.jpg"
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/<?php echo "$row[ProfileImage]"; ?>"
                                 alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -372,7 +372,7 @@
         include_once "footerContactUs.php";
 
     }
-    ?>?>
+    ?>
     <!-- Portfolio Modals-->
     <!-- Portfolio item 1 modal popup-->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">

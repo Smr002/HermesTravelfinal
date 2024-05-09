@@ -110,6 +110,11 @@ if(isset($_POST['logoutButton'])) {
         }
         
     </style>
+    <script>
+        function goSettings() {
+            window.location.href = "settings.php";
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -154,6 +159,35 @@ if(isset($_POST['logoutButton'])) {
                                 mysqli_close($conn);
                             }
                             ?>
+                            <?php
+                              $conn = mysqli_connect("localhost", "root", "", "agencydb");
+    
+                              if($conn){
+                          
+                                $username = $_SESSION['username'];
+                                $sql = "SELECT * FROM Client WHERE Username = '$username' ";
+                                $result = mysqli_query($conn, $sql);
+                          
+                          
+                            
+                                if(mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        $currentPassword = $row['Password'];
+                                        $name = $row['ClientName'];
+                                        $surname = $row['ClientSurname'];
+                                        $phoneNumber = $row['Phone'];
+                                        $email =$row['Email'] ;
+                                        $img = $row['ProfileImage'];
+                                }
+                          
+                            }
+                          
+                          
+                              }else{
+                                echo "<script>alert('Please try again')</script>";
+                              }
+                              mysqli_close($conn);
+                            ?>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
@@ -161,13 +195,15 @@ if(isset($_POST['logoutButton'])) {
                     <li class="nav-item"><a class="nav-link" href="#contact">Review</a></li>
                     <li class="nav-item" id="dropdown">
                         <a class="nav-link" href="#">
-                            <img src="assets/img/logos/person.jpg" id="pe" alt="..." />
+                            <!-- insert img pfp-->
+                            
+                            <img src="<?php echo" assets/img/$img";?>" id="pe" alt="..." />
                             <div id="dropdown-content" style="right:0">
                                 <div class="container mt-5 d-flex justify-content-center">
                                     <div class="card p-3">
                                         <div class="d-flex align-items-center">
                                             <div class="image">
-                                                <img src="assets/img/logos/person.jpg" class="rounded" width="30">
+                                                <img src="<?php echo" assets/img/$img";?>" class="rounded" width="30">
                                             </div>
                                             <div class="ml-3 w-100">
                                                 <h4 class="mb-0 mt-0"><?php echo "{$_SESSION['ClientName']}"." "."{$_SESSION['ClientSurname']}";?></h4>
@@ -187,7 +223,7 @@ if(isset($_POST['logoutButton'])) {
                                                     </div>
                                                 </div>
                                                 <div class="button mt-2 d-flex flex-row align-items-center">
-                                                    <button class="btn btn-sm btn-outline-primary w-100">Chat</button>
+                                                    <button class="btn btn-sm btn-outline-primary w-100" onclick="goSettings()">Profile</button>
                                                     <form method="post">
                                                     <input type="submit" class="btn btn-sm btn-primary w-100 ml-2" name="logoutButton" value="Logout">
                                                     </form>
@@ -196,9 +232,9 @@ if(isset($_POST['logoutButton'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">Profile</a>
-                                <a href="#">Settings</a>
-                                <a href="main.php">Logout</a>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                         </a>
                      </li>

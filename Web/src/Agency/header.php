@@ -65,9 +65,22 @@
 
                     <li class="nav-item"><a class="nav-link"
                             href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="http://localhost/web/src/Agency/transportation.php">Transportation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Other services</a></li>
+                            <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Other Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownServices">
+                            <li>
+                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/accomodation.php'>Accommodation</a>
+                            </li>
+                            <li>
+                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/businessTravel.php'>Business Travel Albania</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                            <li class="nav-item"><a class="nav-link" href="#team">Other services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
                 </ul>
             </div>

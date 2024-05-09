@@ -174,7 +174,8 @@
     </video>
     <div class="container">
         <h1>SignUp</h1>
-        <form id="contactForm" action="#" method="post">
+        <form id="contactForm" action="createAcc.php" method="post" enctype="multipart/form-data">
+
             <div style="display: flex; flex-wrap: wrap;">
                 <div style="flex-basis: 48%;">
                     <label for="firstName">First Name:</label>
@@ -201,7 +202,6 @@
                     <select id="gender" name="gender" required>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
-                        <option value="other">Other</option>
                     </select>
                 </div>
                 <div style="flex-basis: 48%;">
@@ -213,7 +213,12 @@
                     <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword"
                         required>
                 </div>
+                <input type="file" name="profileImage" accept=".jpg, .jpeg, .png, .gif, .bmp, .svg, .webp, .tiff, .psd, .raw">
 
+
+
+
+                
                 <div style="flex-basis: 50%;">
                     <input type="submit" value="Submit" name="Submit">
                     <p class="success-message"></p>
@@ -228,6 +233,12 @@
                 <div style="display: flex; justify-content: center; align-items: center: 100vh;">
                     <div class="g-recaptcha" data-sitekey="6LcAS9MpAAAAABr3H4NksFbee5AYEGstu4L6FHgV"></div>
                 </div>
+                <br>
+                <div class="sign-in-container">
+                
+                </div>
+                
+                
 
 
         </form>
@@ -238,10 +249,7 @@
             "Explore Beyond Boundaries: Your Adventure Awaits!" &amp; ENJOYY"
         </div>
     </div>
-    <?php
-    include "createAcc.php";
-
-    ?>
+   
     <script>
 
         function validateForm() {

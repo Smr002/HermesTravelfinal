@@ -38,7 +38,6 @@ if (isset($_POST["butt"])) {
     <script> 
      alert('Message was sent successfully!');
      document.location.href = 'main.php';
-    </script>
-    ";
+    </script>";
 }
 ?>

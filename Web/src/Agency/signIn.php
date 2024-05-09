@@ -10,11 +10,12 @@
             box-sizing: border-box;
         }
 
-        video {
+        .video {
             position: fixed;
             top: 0;
             left: 0;
             height: 100%;
+            width: 100%;
             z-index: -1; 
             object-fit: cover; 
         }
@@ -113,11 +114,14 @@
         }
     </style>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
 </head>
 <body>
-    <video autoplay loop muted>
-        <source src="assets/img/video.mp4" type="video/mp4" name='video'>
+    <script defer src="video.js"></script>
+    <video class="video" autoplay muted loop>
+        <source src="assets/img/video.mp4">
     </video>
+    
     <div class="container">
         <h1>Login</h1>
         <form id="loginForm" action="#" method="post">

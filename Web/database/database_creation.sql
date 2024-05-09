@@ -1,8 +1,8 @@
 -- Database creation
-CREATE DATABASE IF NOT EXISTS `travel_booking_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `agencydb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Switch to the created database
-USE `travel_booking_system`;
+USE `agencydb`;
 
 -- Create Client table
 CREATE TABLE IF NOT EXISTS `Client` (
@@ -16,6 +16,9 @@ CREATE TABLE IF NOT EXISTS `Client` (
   `Password` VARCHAR(255),
   `Type` VARCHAR(50),
   `Reviews` TEXT
+  `ProfileImage` VARCHAR(255),
+  `Spending` INT
+
 
 );
 
