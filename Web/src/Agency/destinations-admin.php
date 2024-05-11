@@ -1,6 +1,3 @@
-
-    
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +6,34 @@
     <title>Destinations Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="css/styles1.css">
+    <style>
+        /* Add this CSS to hide the form initially */
+        #add-destination-form {
+            display: none;
+        }
+    </style>
 </head>
 <body>
   
 
     <div class="grid-container">
     <!-- Header -->
-    <header class="header"></header>
+    <header class="header">
     <!-- <div class="menu-icon" onclick="openSidebar()">
         <span class="material-icons-outlined">menu</span>
     </div> -->
+    <div class="menu-icon" onclick="openSidebar()"> 
+
+                <span class="material-icons-outlined">menu</span>MENU
+    </div>
         <div class="header-right">
-            <a href="admin.php">
+            <a href="admin.php" class="home-link" title="go back to dash">
         <span class="material-icons-outlined">home</span>
         </a>
         <span class="material-icons-outlined">logout</span>
 
     </div>
+    </header>
     <!-- End Header -->
 
     <!-- Sidebar -->
@@ -132,6 +140,21 @@
 
     
     </div>
-    <script src="js/scripts.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    
+    document.getElementById('add-destination-btn').addEventListener('click', function() {
+        console.log('Add Destination button clicked');
+        document.getElementById('add-destination-form').style.display = 'block'; // Show the form
+    });
+
+    document.getElementById('cancel-country-btn').addEventListener('click', function() {
+        console.log('Cancel button clicked');
+        document.getElementById('add-destination-form').style.display = 'none'; // Hide the form
+    });
+});
+
+</script>
 </body>
 </html>

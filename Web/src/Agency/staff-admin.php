@@ -108,6 +108,22 @@
             display: none;
             text-align: center;
         }
+        .add-country-form label {
+        color: white; 
+    }
+
+    
+    .add-country-form input[type="submit"] {
+        background-color: red; 
+        color: white; 
+        border: none; 
+        padding: 10px 20px; 
+        cursor: pointer; 
+    }
+
+    .add-country-form input[type="submit"]:hover {
+        background-color: darkred; 
+    }
     </style>
 </head>
 <body>
@@ -115,17 +131,18 @@
 
     <div class="grid-container">
     <!-- Header -->
-    <header class="header"></header>
+    <header class="header">
     <!-- <div class="menu-icon" onclick="openSidebar()">
         <span class="material-icons-outlined">menu</span>
     </div> -->
         <div class="header-right">
-            <a href="admin.php">
+            <a href="admin.php" class="home-link" title="go back to dash">
         <span class="material-icons-outlined">home</span>
         </a>
         <span class="material-icons-outlined">logout</span>
 
     </div>
+    </header>
     <!-- End Header -->
 
     <!-- Sidebar -->
@@ -134,7 +151,7 @@
     <!-- Main Content -->
     <main class="main-container">
      <button class="btn btn-primary" id="add-staff-btn">Add Staff </button>
-    <div class="add-country-form" id="add-staff-form">
+    <div class="add-country-form" id="add-staff-form" >
     <form  action="addStaff.php" method="post">
             <div style="display: flex; flex-wrap: wrap;">
                 <div style="flex-basis: 48%;">

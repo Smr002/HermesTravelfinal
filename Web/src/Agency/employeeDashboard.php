@@ -14,15 +14,9 @@ if (!$conn) {
     $client_row = mysqli_fetch_assoc($client_result);
     $client_count = $client_row['client_count'];
 
-    // Query to count staff (types other than 'Client') in the Client table
-    $staff_query = "SELECT COUNT(*) AS staff_count FROM Client WHERE Type != 'Client'";
-    $staff_result = mysqli_query($conn, $staff_query);
-    if (!$staff_result) {
-        die("Query Failed : " . mysqli_error($conn));
-    }
-    $staff_row = mysqli_fetch_assoc($staff_result);
-    $staff_count = $staff_row['staff_count'];
-
+    
+    
+    
     // Query to sum all ClientSpendings from Booking table
     // $sales_query = "SELECT SUM(ClientSpendings) AS total_sales FROM Booking";
     // $sales_result = mysqli_query($conn, $sales_query);
@@ -88,7 +82,7 @@ while ($row = mysqli_fetch_assoc($top_destinations_result)) {
 
 <main class="main-container">
     <div class="main-title">
-        <h2>Welcome admin</h2>
+        <h2>Welcome staff</h2>
     </div>
     <div class="main-cards">
         <div class="card">
@@ -98,13 +92,7 @@ while ($row = mysqli_fetch_assoc($top_destinations_result)) {
             </div>
             <h1><?php echo htmlspecialchars($client_count); ?></h1>
         </div>
-        <div class="card">
-            <div class="card-inner">
-                <h3>Staff</h3>
-                <span class="material-icons-outlined">manage_accounts</span>
-            </div>
-            <h1><?php echo htmlspecialchars($staff_count); ?></h1>
-        </div>
+        
         <div class="card">
             <div class="card-inner">
                 <h3>Total Sales</h3>
@@ -293,5 +281,3 @@ const pieChart = new ApexCharts(
 pieChart.render();
 
 </script>
-
-

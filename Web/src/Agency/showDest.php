@@ -11,7 +11,7 @@ if (!$conn) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $countryName = $row['DestinationName'];
-            $info = $row['DestinationInfo']; 
+            $info = $row['DestinationInfo'];
             $imagePath = 'assets/img/' . $row['DestinationImage'];
             $price = $row['DestinationPrice'];
             $type = $row['Type'];
@@ -20,12 +20,11 @@ if (!$conn) {
             $destID = $row['DestinationID'];
 
             echo "
-            <div class='main-content'>  
-                <div class='card'> <!-- Removed 'onclick' attribute -->
-                    <img src='$imagePath' alt='$countryName' class='card-img' title='Click for more info'>
+            <div class='main-content' title='Click image for more info'>  
+                <div class='card'>
+                    <img src='$imagePath' alt='$countryName' class='card-img' >
                     <div class='card-content'>
-                        <h3>$countryName</h3>
-                       
+                         <h3>$countryName</h3>
                         <div class='card-actions'>
                             <form action='editDestForm.php' method='post'>
                                 <input type='hidden' name='DestinationID' value='$destID'>
@@ -39,10 +38,12 @@ if (!$conn) {
                     </div>
                 </div>
             </div>";
+            ////////////////
+            
             echo "
-            <div class='modal fade' id='exampleModal_$destID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel_$destID' aria-hidden='true'>
-                <div class='modal-dialog modal-dialog-centered modal-sm' role='document'> <!-- Added modal-sm class to make it smaller -->
-                    <div class='modal-content' style='background-color: #9FA8F5; max-width: 30%; margin:0 auto;'> <!-- Added background color style -->
+            <div class='modal fade' id='exampleModal_$destID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel_$destID' aria-hidden='true' style='display: none;'>
+                <div class='modal-dialog modal-dialog-centered' role='document'>
+                    <div class='modal-content' style='background-color: #F8F9FA; width: 80%; margin:0 auto;'>
                         <div class='modal-header'>
                             <h5 class='modal-title' id='exampleModalLabel_$destID'>$countryName</h5>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -50,8 +51,9 @@ if (!$conn) {
                             </button>
                         </div>
                         <div class='modal-body'>
-                            <img src='$imagePath' alt='$countryName' style='max-width: 60%; height: auto; margin: 0 auto;'> <!-- Adjusted image size and centered -->
-                            <p style='margin-top: 10px;'><strong>Description:</strong> $info</p>
+                            <img src='$imagePath' alt='$countryName' style='max-width: 100%; height: auto; margin: 0 auto;'>
+                            <p><strong>Description:</strong></p>
+                            <p style='white-space: pre-wrap;'>$info</p>
                             <p><strong>Price:</strong> $price</p>
                             <p><strong>Type:</strong> $type</p>
                             <p><strong>Start Date:</strong> $start</p>
@@ -59,7 +61,6 @@ if (!$conn) {
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                          
                         </div>
                     </div>
                 </div>
@@ -74,6 +75,27 @@ if (!$conn) {
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles1.css">
+    <style>
+        /* Custom style for modal */
+        .modal-content {
+            background-color: #F8F9FA; /* Light gray background */
+            color: #000000; /* Black text */
+        }
+        </style>
+</head>
+<body>
+
+<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -93,5 +115,8 @@ if (!$conn) {
             var destID = $(this).closest('.card').find('input[name=DestinationID]').val();
             $('#exampleModal_'+destID).modal('show'); // Show the corresponding modal
         });
-    });
+    });
 </script>
+
+</body>
+</html>

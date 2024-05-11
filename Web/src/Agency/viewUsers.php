@@ -9,6 +9,7 @@
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
+    <link rel="stylesheet" href="css/styles1.css">
 </head>
 <body>
     <table id='example' class='table table-striped' style='width:100%'>

@@ -1,6 +1,3 @@
-
-    
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +6,34 @@
     <title>Country Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="css/styles1.css">
+    <style>
+       
+        #add-country-form {
+            display: none;
+        }
+    </style>
 </head>
 <body>
   
 
     <div class="grid-container">
     <!-- Header -->
-    <header class="header"></header>
+    <header class="header">
     <!-- <div class="menu-icon" onclick="openSidebar()">
         <span class="material-icons-outlined">menu</span>
     </div> -->
+    <div class="menu-icon" onclick="openSidebar()"> 
+
+                <span class="material-icons-outlined">menu</span>MENU
+    </div>
         <div class="header-right">
-            <a href="admin.php">
+            <a href="admin.php" class="home-link" title="Go back to dashboard">
         <span class="material-icons-outlined">home</span>
         </a>
         <span class="material-icons-outlined">logout</span>
 
     </div>
+    </header>
     <!-- End Header -->
 
     <!-- Sidebar -->
@@ -65,6 +73,17 @@
 
     
     </div>
-    <script src="js/scripts.js"></script>
+    <script>  document.addEventListener('DOMContentLoaded', function() {
+         
+        document.getElementById('add-country-btn').addEventListener('click', function() {
+            
+            document.getElementById('add-country-form').style.display = 'block'; // Show the form
+        });
+
+        document.getElementById('cancel-country-btn').addEventListener('click', function() {
+            
+            document.getElementById('add-country-form').style.display = 'none'; // Hide the form
+        });
+    });</script>
 </body>
 </html>

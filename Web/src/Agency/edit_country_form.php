@@ -27,7 +27,78 @@ if(isset($_POST['country_id'])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Country Dashboard</title>
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-            <link rel="stylesheet" href="css/styles1.css">
+            
+           <style>
+            body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d2634;
+  color: #9e9ea4;
+  font-family: 'Montserrat', sans-serif;
+}
+            .add-form{
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+
+}
+
+
+.add-form h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.add-form input[type="text"],
+.add-form select,
+.add-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.add-form label {
+  color: black;
+}
+
+.add-form textarea {
+  height: 100px; 
+}
+
+.add-form input[type="file"] {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.add-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-form button.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.add-form button.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.add-form button.btn-primary:hover,
+.add-form button.btn-secondary:hover {
+  opacity: 0.8;
+}
+</style>
+             
         </head>
         <body>
         <div class="add-form" id="add-country-form">
@@ -55,3 +126,8 @@ if(isset($_POST['country_id'])) {
     echo "No country ID received.";
 }
 ?>
+<script>
+document.getElementById('cancel-country-btn').addEventListener('click', function() {
+    window.location.href = 'countries.php';
+});
+</script>

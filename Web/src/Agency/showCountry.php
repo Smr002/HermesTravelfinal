@@ -4,40 +4,74 @@ $conn = mysqli_connect("localhost", "root", "", "agencydb");
 
 if (!$conn) {
     die("Connection Failed : " . mysqli_connect_error());
-}
-else {
+} else {
     $getData = "SELECT * FROM country";
     $result = mysqli_query($conn, $getData);
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $countryId = $row['CountryID'];
             $countryName = $row['CountryName'];
-            $info = $row['CountryInfo']; 
-            $imagePath = 'assets/img/' . $row['CountryImage']; 
+            $info = $row['CountryInfo'];
+            $imagePath = 'assets/img/' . $row['CountryImage'];
+            $countryID = $row['CountryID'];
 
             echo "
-            <div class='main-content'>  
+            <div class='main-content' title='Click image for more info'>  
                 <div class='card'>
-                    <img src='$imagePath' alt='$countryName' class='card-img'>
+                    <img src='$imagePath' alt='$countryName' class='card-img' >
                     <div class='card-content'>
-                        <h3>$countryName</h3>
-                        <p>Description: $info</p>
-                        <div class='card-actions'>
-                        <form action='edit_country_form.php' method='post'>
-                        <input type='hidden' name='country_id' value='$countryId'>
-                        <button type='submit' class='material-icons-outlined' id='edit-country' onclick='return confirmEdit()'>edit</button>
-                        </form>
-                            <form action='delete_country.php' method='post'>
-                                <input type='hidden' name='country_id' value='$countryId'>
-                                <button type='submit' class='material-icons-outlined' id='delete-country' onclick='return confirmDelete()'>delete</button>
-                               
-
-                            </form>
+    <input type='hidden' name='CountryID' value='$countryID'> <!-- Move this line inside div.card-content -->
+    <h3>$countryName</h3>
+    <div class='card-actions'>
+        <form action='edit_country_form.php' method='post'>
+            <input type='hidden' name='country_id' value='$countryID'>
+            <button type='submit' class='material-icons-outlined' id='edit-country' onclick='return confirmEdit()'>edit</button>
+        </form>
+        <form action='delete_country.php' method='post'>
+            <input type='hidden' name='country_id' value='$countryID'>
+            <button type='submit' class='material-icons-outlined' id='delete-country' onclick='return confirmDelete()'>delete</button>
+        </form>
+    </div>
+</div>
+                </div>
+            </div>";
+            ////////////////
+            
+            echo "
+            <div class='modal fade' id='exampleModal_$countryID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel_$countryID' aria-hidden='true' style='display: none;'>
+                <div class='modal-dialog modal-dialog-centered' role='document'>
+                    <div class='modal-content' style='background-color: #F8F9FA; width: 80%; margin:0 auto;'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title' id='exampleModalLabel_$countryID'>$countryName</h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>
+                        <div class='modal-body'>
+                            <img src='$imagePath' alt='$countryName' style='max-width: 100%; height: auto; margin: 0 auto;'>
+                            <p><strong>Description:</strong></p>
+                            <p style='white-space: pre-wrap;'>$info</p>
+                            <p><strong>Destinations:</strong></p>";
+            
+            // SQL query to fetch only destination names of the country
+            $destinations_query = "SELECT DestinationName FROM Destination WHERE CountryID = $countryID";
+            $destinations_result = mysqli_query($conn, $destinations_query);
+            
+            // Loop through the results and display each destination name
+            while ($destination_row = mysqli_fetch_assoc($destinations_result)) {
+                $destinationName = $destination_row['DestinationName'];
+                echo "<p>$destinationName</p>";
+            }
+            
+            echo "
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
                         </div>
                     </div>
                 </div>
             </div>";
+            
         }
     } else {
         echo "No countries found.";
@@ -45,11 +79,33 @@ else {
 
     mysqli_free_result($result);
     mysqli_close($conn);
-    
 }
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles1.css">
+    <style>
+        /* Custom style for modal */
+        .modal-content {
+            background-color: #F8F9FA; /* Light gray background */
+            color: #000000; /* Black text */
+        }
+        </style>
+</head>
+<body>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function confirmEdit(){
         return confirm("Are you sure you want to edit this country?");
@@ -58,4 +114,16 @@ else {
     function confirmDelete() {
         return confirm("Are you sure you want to delete this country?");
     }
+
+    // Open modal when card is clicked
+    $(document).ready(function(){
+        $('.card img').click(function(){
+            // Get the ID of the clicked country
+            var countryID = $(this).closest('.card').find('input[name=CountryID]').val();
+            $('#exampleModal_'+countryID).modal('show'); // Show the corresponding modal
+        });
+    });
 </script>
+
+</body>
+</html>

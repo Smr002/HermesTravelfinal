@@ -15,7 +15,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
   
     while ($row = mysqli_fetch_assoc($result)) {
-        if($row['Type'] != "manager" && $row['Type'] != "employee"){
+        if($row['Type'] != "manager" && $row['Type'] != "employee" && $row['Type'] != "admin"){
         echo "<tr>
                 <td>" . $row['ClientName'] . " " . $row['ClientSurname'] . "</td>
                 <td>" . $row['Username'] . "</td>
