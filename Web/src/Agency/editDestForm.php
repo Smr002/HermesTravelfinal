@@ -104,7 +104,7 @@ if(isset($_POST['DestinationID'])) {
         </head>
         <body>
         <div class="add-form" id="add-country-form">
-            <h3>Edit Country</h3>
+            <h3>Edit Destination</h3>
             <form action="editDest.php" id="country-form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="destID" value="<?php echo $destID; ?>">
                 <input type="text" name="dest-name" placeholder="Destination Name" value="<?php echo $destName; ?>">

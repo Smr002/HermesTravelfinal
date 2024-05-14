@@ -110,9 +110,7 @@
                                         <div class='modal-body'>
                                             <div class='container'>
                                                 <div class='row'>
-                                                    <div class='col-md-6'>
-                                                        <img class='img-fluid rounded' src='<?php echo $imagePath; ?>' alt='...' />
-                                                    </div>
+                                                   
                                                     <div class='col-md-6'>
                                                         <h2 class='text-uppercase'><?php echo $destName; ?></h2>
                                                         <p class='item-intro text-muted'><?php echo $countryName; ?></p>

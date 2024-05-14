@@ -87,7 +87,7 @@
 <input type="date" name="start-date"/>
 <label>End Date:</label>
 <input type="date" name="end-date"/><br><br>
-<label for="type">Choose country</label>
+<label for="type">Choose type</label>
 <select name="type">
     <option value = "Adventure">Adventure</option>
     <option value = "Relaxation">Relaxation</option>

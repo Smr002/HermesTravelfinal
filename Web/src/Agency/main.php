@@ -16,6 +16,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+      .timeline-image img {
+    width: 100%;   /* Allows the image to scale based on the parent container size */
+    height: 100%;  /* Maintains aspect ratio within the parent container */
+    object-fit: cover; /* Ensures the image covers the circle, cropping if necessary */
+    border-radius: 50%; /* Keeps the circular shape */
+    border: 7px solid #e9ecef; /* Adds the border as per the circle */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+    </style>
 </head>
 
 <body id="page-top">

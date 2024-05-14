@@ -101,7 +101,7 @@ if (!$conn) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function confirmEdit(){
-        return confirm("Are you sure you want to edit this country?");
+        return confirm("Are you sure you want to edit this destination?");
     }
 
     function confirmDelete() {

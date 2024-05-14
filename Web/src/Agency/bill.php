@@ -16,11 +16,19 @@ if (isset($_POST['payment'])) {
   $destName = $_POST['destName'];
   
   // Fetch the destination price from the database
-  $dest_query = "SELECT DestinationPrice FROM Destination WHERE DestinationName='$destName'";
+  $dest_query = "SELECT DestinationPrice,Revenue FROM Destination WHERE DestinationName='$destName'";
   $dest_result = mysqli_query($conn, $dest_query);
   if ($dest_result && mysqli_num_rows($dest_result) > 0) {
     $dest_row = mysqli_fetch_assoc($dest_result);
     $productPrice = $dest_row['DestinationPrice'];
+    $dest_revenue = $dest_row['Revenue'];
+$total_revenue = $dest_revenue + $productPrice;
+$add_rev_query = "UPDATE Destination SET Revenue = $total_revenue WHERE DestinationName='$destName'";
+if (!mysqli_query($conn, $add_rev_query)) {
+  echo "<script>alert('Error updating revenue: " . mysqli_error($conn) . "')</script>";
+} 
+
+    
 
     // Continue with your code to update client spending and other operations
     $client_query = "SELECT ClientName, ClientSurname, Spending, Email FROM Client WHERE Username = '$clientUsername'";
@@ -241,7 +249,7 @@ if (isset($_POST['payment'])) {
                   <div class="text-muted mb-2">Payment To</div>
                   <strong> Hermes Travel</strong>
                   <p class="fs-sm">
-                    <!-- 9th Avenue, San Francisco 99383 -->
+                  
                     <br />
                     <a href="#!" class="text-purple">joelsswipefile@gmail.com</a>
                   </p>

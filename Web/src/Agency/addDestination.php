@@ -46,11 +46,11 @@ if($conn){
               $newImageName .= '.' . $ImageExtension;
         
               move_uploaded_file($tmpName, 'assets/img/' . $newImageName);
-              $insert_sql = "INSERT INTO destination (DestinationName, DestinationInfo, DestinationImage, DestinationPrice,StartDate,EndDate,Type ,CountryID) VALUES ('$destName', '$destInfo', '$newImageName',$destPrice,'$destStart','$destEnd','$destType' ,'$destCountry')";
+              $insert_sql = "INSERT INTO destination (DestinationName, DestinationInfo, DestinationImage, DestinationPrice,StartDate,EndDate,Type ,Revenue,CountryID) VALUES ('$destName', '$destInfo', '$newImageName',$destPrice,'$destStart','$destEnd','$destType' ,0,'$destCountry')";
               if(mysqli_query($conn, $insert_sql)) {
                 echo "<script>window.location.href = 'destinations-admin.php';</script>";
               } else {
-                  echo "<script>alert('Add Country failed: " . mysqli_error($conn) . "');</script>";
+                  echo "<script>alert('Add Destination failed: " . mysqli_error($conn) . "');</script>";
               }
          
     

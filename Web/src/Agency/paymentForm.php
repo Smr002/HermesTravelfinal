@@ -5,8 +5,8 @@ if (!$conn) {
     die("Connection Failed : " . mysqli_connect_error());
 } else {
     if (isset($_GET['destID'])) {
-        $id = $_GET['destID'];
-        $getData = "SELECT * FROM Destination WHERE DestinationID= $id";
+        $id = mysqli_real_escape_string($conn, $_GET['destID']);
+        $getData = "SELECT * FROM destination WHERE DestinationID= $id";
         $result = mysqli_query($conn, $getData);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -16,24 +16,14 @@ if (!$conn) {
                 $destType = $row['Type'];
                 $destRev = $row['Revenue'];
             }
-            if (isset($_POST['payment'])) {
-                $new_revenue = $destRev + $price;
-
-
-                $update = "UPDATE Destination SET Revenue = $new_revenue WHERE DestinationID = $id";
-                if (mysqli_query($conn, $update)) {
-                    echo "<script>alert('Success')</script>";
-                } else {
-                    echo "<script>alert('Error')</script>" . mysqli_error($conn);
-                }
-            }
+      
             mysqli_free_result($result);
             mysqli_close($conn);
             if (isset($_POST['payment'])) {
                 header("Location: bill.php?cardNumber=$cardNumber&expiry=$expiry&cvv=$cvv&cardName=$cardName&destName=$destName&price=$price");
-                
+
             }
-            
+
 
             ?>
             <!DOCTYPE html>
@@ -198,12 +188,12 @@ if (!$conn) {
                     }
                 </style>
 
-            <script>
-                   // Define the function for formatting card number and date inputs
-                   $(document).ready(function() {
+                <script>
+                    // Define the function for formatting card number and date inputs
+                    $(document).ready(function () {
                         // For Card Number formatted input
                         var cardNum = document.getElementById('cr_no');
-                        cardNum.onkeyup = function(e) {
+                        cardNum.onkeyup = function (e) {
                             if (this.value == this.lastValue) return;
                             var caretPosition = this.selectionStart;
                             var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
@@ -227,7 +217,7 @@ if (!$conn) {
 
                         // For Date formatted input
                         var expDate = document.getElementById('exp');
-                        expDate.onkeyup = function(e) {
+                        expDate.onkeyup = function (e) {
                             if (this.value == this.lastValue) return;
                             var caretPosition = this.selectionStart;
                             var sanitizedValue = this.value.replace(/[^0-9]/gi, '');
@@ -252,7 +242,7 @@ if (!$conn) {
                 </script>
 
 
-            </script>
+                </script>
 
 
             </head>
@@ -310,29 +300,33 @@ if (!$conn) {
                                             </p>
                                         </div>
                                         <div class="col-lg-7">
-                                        <form method="post" action="bill.php" class="form" name="paymentForm" onsubmit="return validateForm()">
+                                            <form method="post" action="bill.php" class="form" name="paymentForm"
+                                                onsubmit="return validateForm()">
                                                 <!-- Other form fields -->
                                                 <input type="hidden" name="destName" value="<?php echo $destName; ?>">
                                                 <input type="hidden" name="price" value="<?php echo $price; ?>">
 
-                                                
+
 
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form__div">
-                                                        <input type="text" id="cr_no" class="form-control" placeholder="" required minlength="19" maxlength="19">
+                                                            <input type="text" id="cr_no" class="form-control" placeholder=""
+                                                                required minlength="19" maxlength="19">
                                                             <label for="cr_no" class="form__label">Card Number</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
-                                                    <div class="form__div">
-                                                            <input type="text" id="exp" class="form-control" placeholder=" " required minlength="5" maxlength="5">
+                                                        <div class="form__div">
+                                                            <input type="text" id="exp" class="form-control" placeholder=" "
+                                                                required minlength="5" maxlength="5">
                                                             <label for="exp" class="form__label">MM / yy</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
-                                                    <div class="form__div">
-                                                            <input type="password" class="form-control" placeholder=" " required  minlength="3" maxlength="3">
+                                                        <div class="form__div">
+                                                            <input type="password" class="form-control" placeholder=" " required
+                                                                minlength="3" maxlength="3">
                                                             <label for="" class="form__label">CVV Code</label>
                                                         </div>
                                                     </div>
