@@ -8,6 +8,9 @@ Client Table:
     -Phone
     -Password
     -Type
+    -ProfileImage
+    -Review
+    -Rating
     
 
 Country Table:

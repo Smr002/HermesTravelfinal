@@ -3,27 +3,38 @@
 include_once "isLoggedIn.php";
 
 $conn = mysqli_connect("localhost", "root", "", "agencydb");
+if($conn) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+        if(isset($_POST['Review1']) && isset($_POST['star-rating'])){
+        
+            $message = $_POST['Review1'];
+            $rating = $_POST['star-rating'];
+            $username = $_SESSION['username'];
 
-if ($conn) {
-    if (isset($_POST['Review'])) {
-        $new_review = $_POST['Review1'];
-        $username = $_SESSION['username'];
+            // Using prepared statement with placeholders
+            $update = mysqli_prepare($conn, "UPDATE Client SET Reviews = ?, Rating = ? WHERE Username = ?");
+            
+            // Binding parameters to the prepared statement
+            mysqli_stmt_bind_param($update, "sis", $message, $rating, $username);
 
-        // Prepare the statement
-        $update = mysqli_prepare($conn, "UPDATE client SET Reviews = ? WHERE Username = ?");
-        mysqli_stmt_bind_param($update, "ss", $new_review, $username);
-
-        // Execute the statement
-        if (mysqli_stmt_execute($update)) {
-            echo "<script>alert('Thank you for your review!')</script>";
-        } else {
-            echo "<script>alert('Error')</script>" . mysqli_error($conn);
+            if (mysqli_stmt_execute($update)) {
+                echo "<script>alert('Thank you for your review!')</script>";
+            } else {
+                echo "<script>alert('Error')</script>" . mysqli_error($conn);
+            }
         }
+        else{
+            echo "<script>alert('Please enter the review or rating! Thank you!')</script>";
+        }
+    
     }
-
     mysqli_close($conn);
 }
 ?>
+
+
+
 
 
 
@@ -62,6 +73,66 @@ if ($conn) {
             margin: auto;
             /* Center the form horizontally */
         }
+        .container-wrapper1 {
+            background-color: transparent;
+    
+            }
+
+            .container1 {
+            height: 10vh;
+            }
+
+            .rating-wrapper {
+            align-self: left;
+            box-shadow: 7px 7px 25px rgba(198, 206, 237, .7),
+                        -7px -7px 35px rgba(255, 255, 255, .7),
+                        inset 0px 0px 4px rgba(255, 255, 255, .9),
+                        inset 7px 7px 15px rgba(198, 206, 237, .8); 
+            border-radius: 5rem;
+            display: inline-flex;
+            direction: rtl !important;
+            padding: 1.5rem 2.5rem;
+            margin-left: auto;
+            
+
+            label {
+                margin-left: 5%;
+                margin-right: auto;
+                color: #E1E6F6;
+                cursor: pointer;
+                display: inline-flex;
+                font-size: 2.5rem;
+                padding: 1rem .6rem;
+                transition: color 0.5s;
+            }
+            
+            svg {
+                -webkit-text-fill-color: transparent;
+                -webkit-filter: drop-shadow (4px 1px 6px rgba(198, 206, 237, 1));
+                filter:drop-shadow(5px 1px 3px rgba(198, 206, 237, 1));
+            }
+
+            input {
+                height: 100%;
+                width: 100%;
+            }
+            
+            input {
+                display: none;
+            }
+
+            label:hover,
+            label:hover ~ label,
+            input:checked ~ label  {
+                color: #34AC9E;
+            }
+
+            label:hover,
+            label:hover ~ label,
+            input:checked ~ label  {
+                color: #34AC9E;
+            }
+            }
 
 
     </style>
@@ -82,7 +153,55 @@ if ($conn) {
                             required></textarea>
                         <div class="invalid-feedback">A message is required.</div>
                     </div>
+                    <div><div class="container-wrapper1"> 
+                        <br> 
+  <div class="container1 d-flex align-items-center justify-content-center">
+    <div class="row justify-content-center">    
+      
+      <div class="rating-wrapper">
+        
+        
+            <input type="radio" id="5-star-rating" name="star-rating" value="5">
+            <label for="5-star-rating" class="star-rating">
+            <i class="fas fa-star d-inline-block"></i>
+            </label>
+            
+            <!-- star 4 -->
+            <input type="radio" id="4-star-rating" name="star-rating" value="4">
+            <label for="4-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+            </label>
+            
+            <!-- star 3 -->
+            <input type="radio" id="3-star-rating" name="star-rating" value="3">
+            <label for="3-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+            </label>
+            
+            <!-- star 2 -->
+            <input type="radio" id="2-star-rating" name="star-rating" value="2">
+            <label for="2-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+            </label>
+            
+            <!-- star 1 -->
+            <input type="radio" id="1-star-rating" name="star-rating" value="1">
+            <label for="1-star-rating" class="star-rating star">
+            <i class="fas fa-star d-inline-block"></i>
+            </label>
+            <br>
+           
+        
+       </div>
+      <br>
+    </div>
+  </div>
+</div>
+</div>
+<br>
                     <div class="text-center">
+                        <br>
+                        <br>
                         <button type="submit" class="btn btn-primary btn-xl text-uppercase" name="Review">Send
                             Review</button>
                     </div>
