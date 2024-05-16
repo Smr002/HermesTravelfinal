@@ -24,7 +24,7 @@ if (!$conn) {
                 <div class='card'>
                     <img src='$imagePath' alt='$countryName' class='card-img' >
                     <div class='card-content'>
-                         <h3>$countryName</h3>
+                         <h5>$countryName</h5>
                         <div class='card-actions'>
                             <form action='editDestForm.php' method='post'>
                                 <input type='hidden' name='DestinationID' value='$destID'>
@@ -91,7 +91,15 @@ if (!$conn) {
             background-color: #F8F9FA; /* Light gray background */
             color: #000000; /* Black text */
         }
+        .card-img{
+            width: 100%;
+            height: 90px;
+        }
+        .card{
+            height:350px;
+        }
         </style>
+
 </head>
 <body>
 

@@ -15,10 +15,12 @@
 </head>
 
 <body>
-<header class="jumbotron jumbotron-fluid text-center bg-dark text-white py-5">
+<header class=" text-center bg-dark text-white py-5 mb-5">
   <div class="container">
-    <img src="../Agency/assets/img/image.jpg" alt="Albania Landscape" class="img-fluid mb-4 mt-3">
-    <h1 class="display-4">Accommodation</h1>
+    <!-- <img src="../Agency/assets/img/image.jpg" alt="Albania Landscape" class="img-fluid mb-4 mt-3"> -->
+    <br>
+    <br>
+    <h1 class="display-4 ">Accommodation</h1>
   </div>
 </header>
 
@@ -39,7 +41,14 @@
   </main>
 
   <footer class="bg-blue text-white text-center py-4 mt-5">
-    <?php include_once "footer.php"; ?>
+  <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+
+
+include_once "footer.php";
+} else {
+include_once "footerContactUs.php";
+}
+?>
   </footer>
 
   <!-- Bootstrap JS -->

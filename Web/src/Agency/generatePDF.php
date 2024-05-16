@@ -96,35 +96,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //send email with pdf attached
     $mail = new PHPMailer(true);
+
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->CharSet = 'UTF-8';
-    $mail->SMTPDebug = 0;
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'joelsswipefile@gmail.com';
-
-    $mail->Password = 'hghpnekarepehnmv';
+    $mail->Password = 'hghpnekarepehnmv ';
     $mail->SMTPSecure = 'ssl';
-    $mail->Port = 587;
+    $mail->Port = 465;
 
     $mail->setFrom('joelsswipefile@gmail.com', 'Joel');
     $mail->addAddress($_POST['clientEmail']);
-    $mail->addAttachment($dompdf->output(), 'payment_details.pdf');
     $mail->isHTML(true);
     $mail->Subject = 'Payment Receipt';
     $mail->Body = 'Please find attached the payment receipt for your recent payment to Hermes Travel.';
-    $mail->AltBody = 'Please find attached the payment receipt for your recent payment to Hermes Travel.';
-    if ($mail->send()) {
-        echo "<script>alert('Payment receipt sent successfully!')</script>";
-    } else {
-        echo "<script>alert('Error sending payment receipt. Please try again.')</script>";
-    }
+    $mail->addAttachment($dompdf->output(), 'payment_details.pdf');
+   
+    $mail->send();
 } else {
     echo "<script>alert('Error: Form not submitted.')</script>";
 
     // Redirect to the form page
     header("Location: main.php");
 
+    exit;
 }
 ?>

@@ -110,7 +110,7 @@ if(isset($_POST['logoutButton'])) {
         }
         
     </style>
-    <script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js">
         function goSettings() {
             window.location.href = "settings.php";
         }
@@ -131,10 +131,10 @@ if(isset($_POST['logoutButton'])) {
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/main.php">Home</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCountries" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCountries" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Countries
                         </a>
+
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownCountries">
                             <?php
                             $conn = mysqli_connect("localhost", "root", "", "agencydb");
@@ -191,7 +191,20 @@ if(isset($_POST['logoutButton'])) {
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/transportation.php">Transportation</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Other Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownServices">
+                            <li>
+                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/accomodation.php'>Accommodation</a>
+                            </li>
+                            <li>
+                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/businessTravel.php'>Business Travel Albania</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item"><a class="nav-link" href="#contact">Review</a></li>
                     <li class="nav-item" id="dropdown">
                         <a class="nav-link" href="#">

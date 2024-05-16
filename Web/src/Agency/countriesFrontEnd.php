@@ -3,6 +3,13 @@
 
 <head>
     <!-- Add your meta tags, CSS, and other head content here -->
+    <style>
+    .portfolio-item .img-fluid {
+        width: 100%;
+        height: 270px; /* Adjust the height as needed */
+        /* object-fit: cover; Maintain aspect ratio and cover the container */
+    }
+</style>
 </head>
 
 <body id="page-top">
@@ -49,20 +56,33 @@
             <!-- Add filter form -->
             <div class="filter-container">
                 <form id="filterForm" method="post">
-                    <label for="filter">Filter by type:</label>
-                    <select id="filter" name="filter">
-                        <option value="all">All</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="relaxation">Relaxation</option>
-                        <option value="historical">Historical</option>
-                        <option value="cultural">Cultural</option>
-                        <option value="other">Other</option>
-                    </select>
-
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate">
-
-                    <input class="btn btn-primary text-uppercase" type="submit" name="submit" value="Apply Filters">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="filter">Filter by Type:</label>
+                                <select class="form-control" id="filter" name="filter">
+                                    <option value="all">All</option>
+                                    <option value="adventure">Adventure</option>
+                                    <option value="relaxation">Relaxation</option>
+                                    <option value="historical">Historical</option>
+                                    <option value="cultural">Cultural</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="startDate">Start Date:</label>
+                                <input type="date" class="form-control" id="startDate" name="startDate">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase" name="submit">Apply Filters<i class="fas fa-filter"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <br><br>
@@ -286,7 +306,14 @@
                     mysqli_close($conn);
                 }
 
-                include "footer.php";
+                 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+
+
+                    include_once "footer.php";
+                } else {
+                    include_once "footerContactUs.php";
+                }
+                
                 ?>
             </div>
         </div>
@@ -311,5 +338,6 @@
 
     </script>
 </body>
+
 
 </html>

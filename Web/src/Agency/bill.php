@@ -306,9 +306,14 @@ if (!mysqli_query($conn, $add_rev_query)) {
     <input type="hidden" name="paymentNumber" value="<?php echo $paymentNumber; ?>">
     <input type="hidden" name="paymentDate" value="<?php echo $paymentDate; ?>">
     <input type="hidden" name="finalPrice" value="<?php echo $final_price; ?>">
+    <button class="btn btn-primary text-uppercase" type="submit">Generate Bill</button>
     
-    <button class="btn btn-primary text-uppercase" type="submit">OK</button>
 </form>
+<button class="btn btn-primary text-uppercase">
+    <a href='main.php' style="color: inherit; text-decoration: none;">Home</a>
+</button>
+
+
 
             </div>
           </div>

@@ -4,6 +4,14 @@
 <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+    .portfolio-item .img-fluid {
+        width: 100%;
+        height: 300px; /* Adjust the height as needed */
+        /* object-fit: cover; Maintain aspect ratio and cover the container */
+    }
+</style>
+
 </head>
 
 
@@ -251,8 +259,15 @@
                     mysqli_close($conn);
                 }
 
-                include "footer.php";
+                if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+
+
+                    include_once "footer.php";
+                } else {
+                    include_once "footerContactUs.php";
+                }
                 ?>
+                
             </div>
         </div>
     </section>
