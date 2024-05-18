@@ -19,12 +19,8 @@
     <div class="grid-container">
     <!-- Header -->
     <header class="header">
-    <!-- <div class="menu-icon" onclick="openSidebar()">
-        <span class="material-icons-outlined">menu</span>
-    </div> -->
     <div class="menu-icon" onclick="openSidebar()"> 
-
-                <span class="material-icons-outlined">menu</span>MENU
+        <span class="material-icons-outlined">menu</span>MENU
     </div>
         <div class="header-right">
             <a href="employeeDash.php" class="home-link" title="go back to dash">
@@ -47,13 +43,15 @@
         </div>
         <div class="main-bar">
             <div class="search-container">
-                <input type="text" class="search-bar" placeholder="Search...">
-                <button class="btn btn-search">Search</button>
+                <form action="" method="post">
+                    <input type="text" name="search" class="search-bar" placeholder="Search...">
+                    <button type="submit" class="btn btn-search">Search</button>
+                </form>
             </div>
             <button class="btn btn-primary" id="add-destination-btn">Add Destination</button>
         </div>
         
-<div class="add-form" id="add-destination-form">
+   <div class="add-form" id="add-destination-form">
     <h3>Add Destination</h3>
     <form action = "addDestination.php" id="destination-form" method="post" enctype="multipart/form-data">
 <input type="text" name="dest-name"  placeholder="Destination Name">
@@ -140,6 +138,7 @@
 
     
     </div>
+
     <script>
          document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded');

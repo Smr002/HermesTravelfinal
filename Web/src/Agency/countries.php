@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles1.css">
     <style>
         #add-country-form {
             display: none;
+        }
+        .card-img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -18,12 +23,6 @@
         <header class="header">
             <div class="menu-icon" onclick="openSidebar()"> 
                 <span class="material-icons-outlined">menu</span>MENU
-            </div>
-            <div class="header-right">
-                <a href="admin.php" class="home-link" title="Go back to dashboard">
-                    <span class="material-icons-outlined">home</span>
-                </a>
-                <span class="material-icons-outlined">logout</span>
             </div>
         </header>
         <!-- End Header -->
@@ -47,8 +46,8 @@
             <!-- hidden till add-country-btn is clicked -->
             <div class="add-form" id="add-country-form">
                 <h3>Add Country</h3>
-                <form action='addCountry.php'id="country-form" method="post" enctype="multipart/form-data">
-                    <input type="text" name="country-name"  placeholder="Country Name">
+                <form action='addCountry.php' id="country-form" method="post" enctype="multipart/form-data">
+                    <input type="text" name="country-name" placeholder="Country Name">
                     <textarea name="description" placeholder="Description"></textarea>
                     <input type="file" name="image" accept=".jpg, .jpeg, .png">
                     <input type="submit" class="btn btn-primary" name="submitCountry">
@@ -61,53 +60,51 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function(){
-            
-            $("#search-btn").click(function(){
-                var searchQuery = $("#search-bar").val();
-                // Send AJAX request to showCountry.php with the search query
-                $.ajax({
-                    url: "showCountry.php",
-                    type: "POST",
-                    data: {search: searchQuery},
-                    success: function(response){
-                       
-                        $("#search-results").html(response);
-                    }
-                });
-            });
-
-           
+        $(document).ready(function() {
             function loadAllCountries() {
                 $.ajax({
                     url: "showCountry.php",
                     type: "POST",
                     success: function(response){
-                        // Display all countries
                         $("#search-results").html(response);
                     }
                 });
             }
 
-            // loadAllCountries if no search is performed
+            $("#search-btn").click(function() {
+                var searchQuery = $("#search-bar").val();
+                $.ajax({
+                    url: "showCountry.php",
+                    type: "POST",
+                    data: {search: searchQuery},
+                    success: function(response){
+                        $("#search-results").html(response);
+                    }
+                });
+            });
+
             if ($("#search-bar").val() === "") {
                 loadAllCountries();
             }
-        });
-    </script>
 
-    <!-- JavaScript for sidebar and form display -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('add-country-btn').addEventListener('click', function() {
-                document.getElementById('add-country-form').style.display = 'block'; // Show the form
+            $('#add-country-btn').click(function() {
+                $('#add-country-form').show();
             });
 
-            document.getElementById('cancel-country-btn').addEventListener('click', function() {
-                document.getElementById('add-country-form').style.display = 'none'; // Hide the form
+            $('#cancel-country-btn').click(function() {
+                $('#add-country-form').hide();
             });
         });
+
+        function openSidebar() {
+  if (!sidebarOpen) {
+    sidebar.classList.add("sidebar-responsive");
+    sidebarOpen = true;
+  }
+}
+
     </script>
 </body>
 </html>

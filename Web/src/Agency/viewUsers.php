@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +20,19 @@
                 <th>Gender</th>
                 <th>Review</th>
             </tr>
-            <?php include_once 'showUsers.php'; ?>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            <?php include_once 'showUsers.php'; ?>
+        </tbody>
     </table>
 
     <script>
-      new DataTable('#example');
-      
-     
+      $(document).ready(function () { 
+            $('#example').DataTable({ 
+                // Enable the searching of the DataTable 
+                searching: true 
+            }); 
+        }); 
     </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Employee Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard-styles.css">
 </head>
@@ -21,13 +21,7 @@
 
                 <span class="material-icons-outlined">menu</span>MENU
     </div>
-        <div class="header-right">
-            <a href="employeeDash.php" class="home-link" title="go back to dashboard">
-        <span class="material-icons-outlined">home</span>
-        </a>
-        <span class="material-icons-outlined">logout</span>
-
-    </div>
+        
     </header>
     <!-- End Header -->
 

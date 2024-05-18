@@ -21,13 +21,7 @@
 
                 <span class="material-icons-outlined">menu</span>MENU
     </div>
-        <div class="header-right">
-            <a href="admin.php" class="home-link" title="go back to dashboard">
-        <span class="material-icons-outlined">home</span>
-        </a>
-        <span class="material-icons-outlined">logout</span>
-
-    </div>
+        
     </header>
     <!-- End Header -->
 

@@ -135,13 +135,7 @@
     <!-- <div class="menu-icon" onclick="openSidebar()">
         <span class="material-icons-outlined">menu</span>
     </div> -->
-        <div class="header-right">
-            <a href="admin.php" class="home-link" title="go back to dash">
-        <span class="material-icons-outlined">home</span>
-        </a>
-        <span class="material-icons-outlined">logout</span>
-
-    </div>
+       
     </header>
     <!-- End Header -->
 
@@ -150,7 +144,7 @@
     <!-- End Sidebar -->
     <!-- Main Content -->
     <main class="main-container">
-     <button class="btn btn-primary" id="add-staff-btn">Add Staff </button>
+     
     <div class="add-country-form" id="add-staff-form" >
     <form  action="addStaff.php" method="post">
             <div style="display: flex; flex-wrap: wrap;">
@@ -198,7 +192,7 @@
                     <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
                 </div>
                 <div style="flex-basis: 100%;">
-                    <input type="submit" value="Submit" name = "Submit">
+                    <input type="submit" value="Submit" name = "Submit"> <br><br>
                     <p class="success-message"></p>
                     <p class="error-message"></p>
                 </div>
@@ -226,8 +220,7 @@
     //     echo "<p>$staff_username</p>";
     //     echo "<p>$staff_password</p>";
     //     echo "<p>$staff_salary</p>";
-        echo "<button class='btn btn-primary'>Edit</button>";
-        echo "<button class='btn btn-primary'>Delete</button>";
+      
         echo "</div>";
     //}
     

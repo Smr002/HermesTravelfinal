@@ -136,29 +136,28 @@ if($conn) {
      
 
     </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 </head>
 
-<body id="page-top" data-aos='fade-up'>
+<body id="page-top">
     <!-- Contact-->
-    <section class="page-section" id="contact" data-aos='fade-up'>
-        <div data-aos='fade-up' class="container">
-            <div data-aos='fade-up' class="text-center">
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="text-center">
                 <h2 class="section-heading text-uppercase">Leave a Review For Us</h2>
             </div>
-            <div data-aos='fade-up' class="row justify-content-center"> <!-- Center the form horizontally -->
+            <div class="row justify-content-center"> <!-- Center the form horizontally -->
                 <form id="contactForm" method="post" class="col-md-6">
-                    <div data-aos='fade-up' class="form-group form-group-textarea">
+                    <div class="form-group form-group-textarea">
                         <textarea class="form-control" id="message" placeholder="Your Message *" name="Review1"
                             required></textarea>
-                        <div data-aos='fade-up' class="invalid-feedback">A message is required.</div>
+                        <div class="invalid-feedback">A message is required.</div>
                     </div>
                     <div><div class="container-wrapper1"> 
                         <br> 
-  <div data-aos='fade-up' class="container1 d-flex align-items-center justify-content-center">
-    <div data-aos='fade-up' class="row justify-content-center">    
+  <div class="container1 d-flex align-items-center justify-content-center">
+    <div class="row justify-content-center">    
       
-      <div data-aos='fade-up' class="rating-wrapper">
+      <div class="rating-wrapper">
         
         
             <input type="radio" id="5-star-rating" name="star-rating" value="5">
@@ -199,7 +198,7 @@ if($conn) {
 </div>
 </div>
 <br>
-                    <div data-aos='fade-up' class="text-center">
+                    <div class="text-center">
                         <br>
                         <br>
                         <button type="submit" class="btn btn-primary btn-xl text-uppercase" name="Review">Send
@@ -211,10 +210,10 @@ if($conn) {
     </section>
     <!-- Footer-->
     <footer class="footer py-4">
-        <div data-aos='fade-up' class="container">
-            <div data-aos='fade-up' class="row align-items-center">
-                <div data-aos='fade-up' class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2024</div>
-                <div data-aos='fade-up' class="col-lg-4 my-3 my-lg-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Hermes Travel 2024</div>
+                <div class="col-lg-4 my-3 my-lg-0">
                     <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Twitter"><i
                             class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#" aria-label="Facebook"><i
@@ -222,26 +221,14 @@ if($conn) {
                     <a class="btn btn-dark btn-social mx-2" href="#" aria-label="LinkedIn"><i
                             class="fab fa-linkedin-in"></i></a>
                 </div>
-                <div data-aos='fade-up' class="col-lg-4 text-lg-end">
+                <div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#">Privacy Policy</a>
                     <a class="link-dark text-decoration-none" href="#">Terms of Use</a>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            // Global settings:
-            offset: 100, // offset (in px) from the original trigger point
-            duration: 1000, // duration of the animation
-            easing: 'ease', // default easing for AOS animations
-            once: true // whether animation should happen only once - while scrolling down
-        });
-
-        // Your other JavaScript code
-    </script>
+    
 </body>
 
 </html>

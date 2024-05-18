@@ -5,7 +5,17 @@ $conn = mysqli_connect("localhost", "root", "", "agencydb");
 if (!$conn) {
     die("Connection Failed : " . mysqli_connect_error());
 } else {
-    $getData = "SELECT * FROM destination";
+    $searchQuery = isset($_POST['search']) ? $_POST['search'] : '';
+    $searchQuery = mysqli_real_escape_string($conn, $searchQuery); // Sanitize input
+
+    if (!empty($searchQuery)) {
+        // Modify query to search by country name or information
+        $getData = "SELECT * FROM Destination WHERE DestinationName LIKE '%$searchQuery%' OR DestinationInfo LIKE '%$searchQuery%'";
+    } else {
+        // Default query to get all countries
+        $getData = "SELECT * FROM Destination";
+    }
+
     $result = mysqli_query($conn, $getData);
 
     if (mysqli_num_rows($result) > 0) {
@@ -39,6 +49,9 @@ if (!$conn) {
                 </div>
             </div>";
             ////////////////
+
+            $destinations_query = "SELECT DestinationName FROM Destination WHERE DestinationID = $destID";
+            $destinations_result = mysqli_query($conn, $destinations_query);
             
             echo "
             <div class='modal fade' id='exampleModal_$destID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel_$destID' aria-hidden='true' style='display: none;'>
@@ -117,13 +130,15 @@ if (!$conn) {
     }
 
     // Open modal when card is clicked
-    $(document).ready(function(){
-        $('.card img').click(function(){
-            // Get the ID of the clicked destination
-            var destID = $(this).closest('.card').find('input[name=DestinationID]').val();
-            $('#exampleModal_'+destID).modal('show'); // Show the corresponding modal
-        });
+    $(document).ready(function() {
+    // Open modal when card is clicked
+    $('.main-container').on('click', '.card img', function() {
+        // Get the ID of the clicked destination
+        var destID = $(this).closest('.card').find('input[name=DestinationID]').val();
+        $('#exampleModal_'+destID).modal('show'); // Show the corresponding modal
     });
+});
+
 </script>
 
 </body>

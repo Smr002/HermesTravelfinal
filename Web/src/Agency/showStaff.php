@@ -41,7 +41,7 @@ mysqli_close($conn);
 ?>
 <script>
     function confirmEdit(){
-        return confirm("Are you sure you want to edit this country?");
+        return confirm("Are you sure you want to edit this staff member?");
     }
 
     function confirmDelete(userID) {

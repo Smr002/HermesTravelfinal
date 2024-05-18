@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `Client` (
   `Type` VARCHAR(50),
   `Reviews` TEXT
   `ProfileImage` VARCHAR(255),
-  `Spending` INT
+  `Spending` INT,
   `Rating`  INT
 
 

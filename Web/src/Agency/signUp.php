@@ -11,6 +11,7 @@
             height: 100%;
             z-index: -1;
             object-fit: cover;
+            width: 100%;
         }
 
         * {
@@ -230,7 +231,7 @@
                         <button id="signIn" type="button">Sign In</button>
                 </div>
                 <br>
-                <div style="display: flex; justify-content: center; align-items: center: 100vh;">
+                <div style="display: flex; justify-content: center; align-items: center;">
                     <div class="g-recaptcha" data-sitekey="6LcAS9MpAAAAABr3H4NksFbee5AYEGstu4L6FHgV"></div>
                 </div>
                 <br>

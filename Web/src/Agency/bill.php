@@ -295,7 +295,7 @@ if (!mysqli_query($conn, $add_rev_query)) {
                   ?>
                 <h5 class="text-success"><?php echo '$'.$final_price; ?></h5>
               </div>
-              <form action="generatePDF.php" method="post">
+              <form action="generatePDF.php" target="_blank" method="post">
     <!-- Include any necessary hidden fields to pass data -->
     <input type="hidden" name="username" value="<?php echo $clientUsername; ?>">
     <input type="hidden" name="destName" value="<?php echo $destName; ?>">

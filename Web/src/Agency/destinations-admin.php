@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinations Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles1.css">
     <style>
         /* Add this CSS to hide the form initially */
@@ -26,13 +27,7 @@
 
                 <span class="material-icons-outlined">menu</span>MENU
     </div>
-        <div class="header-right">
-            <a href="admin.php" class="home-link" title="go back to dash">
-        <span class="material-icons-outlined">home</span>
-        </a>
-        <span class="material-icons-outlined">logout</span>
-
-    </div>
+        
     </header>
     <!-- End Header -->
 
@@ -105,30 +100,6 @@
     </div>
     <div class="main-content">  
        
-        <!-- <div class="card">
-            <img src="vlore1.jpg" alt="flag" class="card-img">
-            <div class="card-content">
-                <h3>Vlore</h3>
-                <p>Country: Albania</p>
-                <div class="card-actions">
-                    <button class="material-icons-outlined" id="edit-destination">edit</button>
-                    <button class="material-icons-outlined" id="delete-destination">delete</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <img src="sevilla1.jpg" alt="flag" class="card-img">
-            <div class="card-content">
-                <h3>Sevilla</h3>
-                <p>Country: Spain</p>
-                <div class="card-actions">
-                    <button class="material-icons-outlined" id="edit-destination">edit</button>
-                    <button class="material-icons-outlined" id="delete-destination">delete</button>
-                </div>
-            </div>
-        
-        </div> -->
         <?php
 
     include_once 'showDest.php';
@@ -140,6 +111,37 @@
 
     
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $(".btn-search").click(function() {
+        var searchQuery = $(".search-bar").val(); // Changed selector to class
+        console.log("Search Query:", searchQuery); // Add this line for debugging
+        $.ajax({
+            url: "showDest.php",
+            type: "POST",
+            data: {search: searchQuery},
+            success: function(response){
+                // Update the appropriate element with the search results
+                $(".main-content").html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+
+
+        function openSidebar() {
+  if (!sidebarOpen) {
+    sidebar.classList.add("sidebar-responsive");
+    sidebarOpen = true;
+  }
+}
+
+    </script>
     <script>
          document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded');

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <?php
 
 
-include_once "Logout.php"; 
+include_once "Logout.php";
 
-if(isset($_POST['logoutButton'])) {
-    logout(); 
+if (isset($_POST['logoutButton'])) {
+    logout();
 }
+
 
 
 ?>
@@ -34,8 +35,8 @@ if(isset($_POST['logoutButton'])) {
         #dropdown {
             position: relative;
             display: inline-block;
-       
-            
+
+
         }
 
         #dropdown-content {
@@ -45,7 +46,7 @@ if(isset($_POST['logoutButton'])) {
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
-            
+
         }
 
         #dropdown-content a {
@@ -53,7 +54,7 @@ if(isset($_POST['logoutButton'])) {
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            
+
         }
 
         #dropdown-content a:hover {
@@ -62,7 +63,7 @@ if(isset($_POST['logoutButton'])) {
 
         #dropdown:hover #dropdown-content {
             display: block;
-            
+
         }
 
         .card {
@@ -108,7 +109,6 @@ if(isset($_POST['logoutButton'])) {
             height: 1.9rem;
             margin-right: 1rem;
         }
-        
     </style>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js">
         function goSettings() {
@@ -129,9 +129,11 @@ if(isset($_POST['logoutButton'])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/main.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/main.php">Home</a>
+                    </li>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCountries" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCountries" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Countries
                         </a>
 
@@ -150,7 +152,7 @@ if(isset($_POST['logoutButton'])) {
                                         $countryId = $row['CountryID'];
                                         $countryName = $row['CountryName'];
                                         echo "<li><a class='dropdown-item' href='countriesFrontEnd.php?countryId=$countryId'>$countryName</a></li>";
-                                        
+
 
 
                                     }
@@ -160,47 +162,53 @@ if(isset($_POST['logoutButton'])) {
                             }
                             ?>
                             <?php
-                              $conn = mysqli_connect("localhost", "root", "", "agencydb");
-    
-                              if($conn){
-                          
+                            $conn = mysqli_connect("localhost", "root", "", "agencydb");
+
+                            if ($conn) {
+
                                 $username = $_SESSION['username'];
                                 $sql = "SELECT * FROM Client WHERE Username = '$username' ";
                                 $result = mysqli_query($conn, $sql);
-                          
-                          
-                            
-                                if(mysqli_num_rows($result) > 0) {
-                                    while($row = mysqli_fetch_assoc($result)) {
+
+
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
                                         $currentPassword = $row['Password'];
                                         $name = $row['ClientName'];
                                         $surname = $row['ClientSurname'];
                                         $phoneNumber = $row['Phone'];
-                                        $email =$row['Email'] ;
+                                        $email = $row['Email'];
                                         $img = $row['ProfileImage'];
+                                        $spending=$row['Spending'];
+                                    }
+
                                 }
-                          
-                            }
-                          
-                          
-                              }else{
+
+
+                            } else {
                                 echo "<script>alert('Please try again')</script>";
-                              }
-                              mysqli_close($conn);
+                            }
+                            mysqli_close($conn);
                             ?>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="http://localhost/web/src/Agency/destinationsFrontEnd.php">Destinations</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServices" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Other Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownServices">
                             <li>
-                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/accomodation.php'>Accommodation</a>
+                                <a class='dropdown-item '
+                                    href='http://localhost/web/src/Agency/accomodation.php'>Accommodation</a>
                             </li>
                             <li>
-                                <a class='dropdown-item ' href='http://localhost/web/src/Agency/businessTravel.php'>Business Travel Albania</a>
+                                <a class='dropdown-item '
+                                    href='http://localhost/web/src/Agency/businessTravel.php'>Business Travel
+                                    Albania</a>
                             </li>
                         </ul>
                     </li>
@@ -209,38 +217,40 @@ if(isset($_POST['logoutButton'])) {
                     <li class="nav-item" id="dropdown">
                         <a class="nav-link" href="#">
                             <!-- insert img pfp-->
-                            
-                            <img src="<?php echo" assets/img/$img";?>" id="pe" alt="..." />
+
+                            <img src="<?php echo " assets/img/$img"; ?>" id="pe" alt="..." />
                             <div id="dropdown-content" style="right:0">
                                 <div class="container mt-5 d-flex justify-content-center">
                                     <div class="card p-3">
                                         <div class="d-flex align-items-center">
                                             <div class="image">
-                                                <img src="<?php echo" assets/img/$img";?>" class="rounded" width="30">
+                                                <img src="<?php echo " assets/img/$img"; ?>" class="rounded" width="30">
                                             </div>
                                             <div class="ml-3 w-100">
-                                                <h4 class="mb-0 mt-0"><?php echo "{$_SESSION['ClientName']}"." "."{$_SESSION['ClientSurname']}";?></h4>
-                                                <span>Status:<?php echo "{$_SESSION['Type']}";?></span>
+                                                <h4 class="mb-0 mt-0">
+                                                    <?php echo "{$_SESSION['ClientName']}" . " " . "{$_SESSION['ClientSurname']}"; ?>
+                                                </h4>
+                                                <span>Status:<?php echo "{$_SESSION['Type']}"; ?></span>
                                                 <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                                                    <div class="d-flex flex-column">
-                                                        <span class="articles">Articles</span>
-                                                        <span class="number1">38</span>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <span class="followers">Followers</span>
-                                                        <span class="number2">980</span>
-                                                    </div>
-                                                    <div class="d-flex flex-column">
-                                                        <span class="rating">Rating</span>
-                                                        <span class="number3">8.9</span>
-                                                    </div>
-                                                </div>
+    <div class="d-flex flex-column">
+        <span class="spending-label">Spending</span>
+        <span class="spending-amount"><?php echo "$" . number_format($spending, 2); ?></span>
+    </div>
+</div>
                                                 <div class="button mt-2 d-flex flex-row align-items-center">
-                                                    <button class="btn btn-sm btn-outline-primary w-100" onclick="goSettings()">Profile</button>
+                                                    <button class="btn btn-sm btn-outline-primary w-100"
+                                                        onclick="goSettings()">Profile</button>
                                                     <form method="post">
-                                                    <input type="submit" class="btn btn-sm btn-primary w-100 ml-2" name="logoutButton" value="Logout">
+                                                        <input type="submit" class="btn btn-sm btn-primary w-100 ml-2"
+                                                            name="logoutButton" value="Logout">
                                                     </form>
                                                 </div>
+
+                                                <script>
+                                                    function goSettings() {
+                                                        window.location.href = 'settings.php';
+                                                    }
+                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -250,12 +260,13 @@ if(isset($_POST['logoutButton'])) {
                                 <br>
                             </div>
                         </a>
-                     </li>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
 </body>
+
 
 </html>

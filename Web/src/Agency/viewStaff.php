@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,15 +21,18 @@
                 <th>Type</th>
                 <th>Delete</th>
             </tr>
-            <?php include_once 'showStaff.php'; ?>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            <?php include_once 'showStaff.php'; ?>
+        </tbody>
     </table>
 
     <script>
-      new DataTable('#example');
-      
-     
+      $(document).ready(function () { 
+            $('#example').DataTable({ 
+                searching: true
+            }); 
+        }); 
     </script>
 </body>
 </html>
